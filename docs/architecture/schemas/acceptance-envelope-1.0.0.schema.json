@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixue.local/schemas/acceptance-envelope/1.0.0",
+  "$comment": "Worker-built envelope. Control fields are not model output. Model block is copied from the persisted invocation config and provider response, never from ModelGradePayload. Proposed 2026-10-12.",
+  "title": "AcceptanceEnvelope 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "job_id",
+    "attempt_id",
+    "generation",
+    "fencing_epoch",
+    "lease_token",
+    "input_hash",
+    "invocation_id",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": { "const": "acceptance-envelope/1.0.0" },
+    "job_id": { "type": "string", "format": "uuid" },
+    "attempt_id": { "type": "string", "format": "uuid" },
+    "generation": { "type": "integer", "minimum": 1 },
+    "fencing_epoch": { "type": "integer", "minimum": 1 },
+    "lease_token": { "type": "string", "minLength": 16, "maxLength": 200 },
+    "input_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "invocation_id": { "type": "string", "format": "uuid" },
+    "payload": { "$ref": "https://zhixue.local/schemas/model-grade-payload/1.0.0" }
+  }
+}

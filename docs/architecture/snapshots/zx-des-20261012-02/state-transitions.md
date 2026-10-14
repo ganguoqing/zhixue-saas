@@ -1,0 +1,66 @@
+# 状态转换 v2
+
+**包编号：** ZX-DES-20261012-02  
+**状态：** Proposed。  
+**v1 来源：** 2026-10-11 同文件。与本文件冲突的边作废。  
+**写列细节：** 数据字典 v2 第 4–6 节。禁止通用 `PATCH status`。
+
+## 1. 上传与校验
+
+v1 把 `created → uploading` 和“事务直接写 uploading”写成两套。v2 只有一个已提交状态：`StartUpload` 提交后就是 `uploading`。不存在需要客户端再推进的已提交 `created`。
+
+| 命令 | Actor | From | Guard | To | 版本 | 写入 | 费用 | 错误 |
+|---|---|---|---|---|---|---|---|---|
+| `StartUpload` | 授权教师 | 无已提交行 | 租户允许新上传 | `uploading` | 新建 session | INSERT session=`uploading`，object=`pending` | 无 | 403/404/429 |
+| `FinalizeUpload` | 同一教师；校验在事务外完成 | `uploading` | 对象大小与校验和一致；学生答卷则考试已冻结 | `finalized` | session.state_version | INSERT source_asset；学生答卷 INSERT submission=`awaiting_validation`、page_set 1、generation 1、validate job、预留、outbox | 预留，未外部调用 | 幂等：同一哈希返回原结果 |
+| `CancelUpload` / `ExpireUpload` | 教师 / 系统 | `uploading` | 未 finalized | `cancelled` / `expired` | session.state_version | 会话终态；对象待清理 | 释放未使用预留 | 已 finalized 则 409 |
+| `AcceptValidation` | ingress，`ai.result.accept` | submission `awaiting_validation` | 当前 validate attempt；文件规则通过或失败已分类 | `validated` 或 `rejected` | submission + job epoch | 见接纳矩阵。非法文件不建评分 job | 解析若未付费则无 invocation | 旧 attempt 不改当前 submission |
+
+`AcceptValidation` 是 submission 从 `awaiting_validation` 到 `validated` 的唯一边。资产行同时标为 validated 或 quarantine。
+
+## 2. 匹配、换页、识别
+
+| 命令 | Actor | From | Guard | To | 版本 | 写入 | 费用 | 错误 |
+|---|---|---|---|---|---|---|---|---|
+| `MatchAutomatically` | 系统 | `validated` | 只在当前名单版本中找标识 | `matched` 或 `match_review_required` | submission.state_version | 成功则 INSERT binding，指针指向它 | 无 | 零个或多候选不猜测 |
+| `ResolveMatch` | 范围内教师 | `match_review_required` | 所选学生在当前名单版本 | `matched` | submission + roster pointer | INSERT binding | 无 | 名单外 422 |
+| `CorrectMatch` | 范围内教师 | `matched`，且该 participation **尚未**有正式指针 | 新学生在当前或新名单版本；理由非空 | 仍 `matched`，绑定改为新人 | generation+1；binding 指针 CAS | INSERT 名单版本（若需要）、新 entry、新 binding；旧 binding 保留；旧 job `cancel_requested`；旧 proposal 生命周期作废 | 已发生费用不删 | 已有正式指针则改走 `OpenAttributionCorrection`，本命令 409 |
+| `AcceptRecognition` | ingress | `matched` 且来源不是只提取教师分 | 当前 OCR attempt 与 generation | `parsed` 或 `ocr_review_required` | generation | INSERT answer_revisions。不写 proposal 分数 | 仅当本 stage 有 intent | 旧世代 409 且不改当前 job |
+| `ExtractTeacherMarks` | 系统 | `matched` 且 source=`graded_script` | 不创建 model_grade job | `proposed` | generation | proposal `extracted_teacher_mark`；invocation 不插入。解析 job 若存在则 `stage=mark_extraction`，`billable=false` | 无模型费 | — |
+| `SupplyReplacementPage` | 范围内教师 | `incomplete` 或 `parsed` 发现缺页 | 新页已 finalized | `awaiting_validation` | 新 page_set、generation+1 | INSERT page_set：未换的页指向旧 asset，替换页指向新 asset。旧 page_set 不删 | 新的校验预留；不重复已结算的模型费 | 不覆盖旧页行 |
+| `CorrectRecognition` | 范围内教师 | `ocr_review_required` 或 `parsed` | 逐题 | `parsed` | generation+1 | INSERT 新 answer_revision；旧 review/proposal 生命周期作废 | 无，除非教师再要求模型 | 409 |
+| `ValidateCoverage` | 系统 | `parsed` | 当前 page_set 页码连续；每槽有修订或显式 blank；binding 是当前指针 | `ready_for_grading` 或 `incomplete` | generation | 只写覆盖检查结果行 | 无 | 缺页停在 `incomplete`，不发布 |
+
+## 3. 执行与人工恢复
+
+执行状态仍在 job 上，不表示已发布。
+
+| 命令 | Actor | From | Guard | To | 写入 | 费用 |
+|---|---|---|---|---|---|---|
+| `ScheduleJob` | 协调者 | 无此 logical_key | 本 stage 预留成功；租户允许**这一** stage | `queued` | INSERT job；current_attempt 仍空直到领取 | 本 stage 预留 |
+| `ClaimJob` | Worker | `queued` 或租约过期且仍是当前 attempt 的 `running` | 见事务文档宽限 | `running` | INSERT 新 attempt；UPDATE `current_attempt_id` 与 `current_fencing_epoch+1` | 无新的外部费 |
+| `FailFinal` | NestJS，且调用者是当前 attempt | `running` | 不可重试或预算耗尽 | `failed_final` | 当前 job 终态。旧 attempt 的请求不能走这条边 | 按已有 intent 结算，不从载荷造账 |
+| `OpenManualScore` | 范围内教师 | `failed_final` 或 `exception_review`，且没有合格 proposal | 冻结仍有效；身份绑定仍是当前 | 考试草稿 `building` | INSERT `score_drafts.origin=manual` 与 draft items。不插入假的 AI proposal，不插入 invocation | 无 |
+| `RerouteAfterInvalidation` | 系统 | review 已作废 | 存在当前 generation 的合格 proposal，或教师已 `OpenManualScore` | proposal `review_required` 或草稿可复核 | INSERT 新的路由生命周期。旧 review 行不改正文 | 无 |
+
+模型输出非法不会被修成合格 proposal。当前 attempt 进入 `exception_review` 后，发布路径是 `OpenManualScore`，不是把坏 JSON 的分数入库。
+
+## 4. 复核与发布
+
+| 命令 | Actor | From | Guard | To | 写入 |
+|---|---|---|---|---|---|
+| `RouteReview` | 策略 | 合格 proposal | 未校准不得标成可批量 | `review_required` 或 `batch_confirm_eligible` | 生命周期路由 + policy_snapshot |
+| `CompleteReview` / `ConfirmSelected` | 教师 | 对应路由 | 显式 id+版本；分数符合冻结组合函数 | `review_completed` | INSERT review 事实。一组确认任一冲突则整组回滚 |
+| `ScoreBlankAsZero` | 教师 | 当前 blank revision | 决定显式 | draft item numeric 0.00 | 见字典。原 blank 行不改 |
+| `PublishScoreVersion` | 教师，app 角色 | 每个名单学生都有一种就绪依据 | itemized 槽位齐全；total_only 有确认；absent 已批准；冻结哈希未变；权限仍在 | 指针建立 | INSERT 正式行。total_only **不要求**逐题 review |
+| `RequestRevision` | 教师 | 指针已存在 | 理由 | 新草稿 building | 旧正式行不更新 |
+| `RepublishRevision` | 教师 | 草稿守卫通过 | 指针 CAS | 新正式行成为当前 | INSERT 新 score_version。旧 total 不变 |
+| `OpenAttributionCorrection` | 教师 | 已发布且绑定错误 | 发布后 | 甲：`attribution_corrected_away`；乙：走自己的确认发布 | 不 UPDATE 甲的旧分数行 |
+
+首次发布仍是整场名单都有依据才提交。依据可以是 itemized、total_only 或 absent 的组合。这不是“只发布一部分学生”。
+
+## 5. 拒绝边
+
+未匹配就评分、未审核答案就冻结、旧 attempt 推进当前 generation、AI 角色发布、`UPDATE` 已发布 item、用当前班级改旧名单、总分导入写入 mastery_evidence、`mark_kind=blank` 且 score 0 进入正式 item、通用 PATCH status。
+
+拒绝不写成功 outbox。未运行测试。

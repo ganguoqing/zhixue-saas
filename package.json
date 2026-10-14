@@ -1,0 +1,25 @@
+{
+  "name": "zhixue-saas",
+  "private": true,
+  "workspaces": [
+    "apps/api"
+  ],
+  "scripts": {
+    "build": "npm run build -w @zhixue/api",
+    "migrate": "node scripts/migrate.mjs",
+    "seed": "node scripts/seed.mjs",
+    "test:m0": "node --test --test-timeout 180000 tests/m0/integration.test.mjs"
+  },
+  "dependencies": {
+    "bullmq": "5.61.0",
+    "ioredis": "5.8.2",
+    "jsonwebtoken": "9.0.2",
+    "pg": "8.16.3"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "9.0.10",
+    "@types/node": "24.7.0",
+    "@types/pg": "8.15.5",
+    "typescript": "5.9.3"
+  }
+}

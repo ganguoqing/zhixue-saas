@@ -1,0 +1,710 @@
+{
+  "report_id": "ZX-AR-20261012-05",
+  "reviewed_package": "ZX-DES-20261012-04",
+  "review_date_local": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "scope": "Independent G0 design review; user repository read only; no ADR acceptance or implementation approval",
+  "source_files": [
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/review-remediation-v4.md",
+      "relative_path": "docs/architecture/review-remediation-v4.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/review-remediation-v4.md",
+      "sha256": "e58cf450bcf4f31af50798c698994c5ed339343276aa2aaa81c5f34e3a2eb5cd",
+      "bytes": 7172,
+      "lines": 76
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/current-contract-index-v3.md",
+      "relative_path": "docs/architecture/current-contract-index-v3.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/current-contract-index-v3.md",
+      "sha256": "77f2b62411f852fa03f91115978e0b08bc440ce1babf1e64231b619767041287",
+      "bytes": 4179,
+      "lines": 65
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/data-dictionary.md",
+      "relative_path": "docs/architecture/data-dictionary.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/data-dictionary.md",
+      "sha256": "136093f4525cfbc44cf35d939ccb5d4f5fccd0a3049a52422da930141145c54d",
+      "bytes": 20982,
+      "lines": 222
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/state-transitions.md",
+      "relative_path": "docs/architecture/state-transitions.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/state-transitions.md",
+      "sha256": "ce0de7553168922394d1978d1eb6c9be5625e851212bd684f2f719a00e537221",
+      "bytes": 9568,
+      "lines": 71
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/transaction-boundaries.md",
+      "relative_path": "docs/architecture/transaction-boundaries.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/transaction-boundaries.md",
+      "sha256": "4fc8304801240a7c3a88526840b02c97c9dea579484705776817a095694728c8",
+      "bytes": 15554,
+      "lines": 234
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/authorization-matrix-v2.md",
+      "relative_path": "docs/architecture/authorization-matrix-v2.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/authorization-matrix-v2.md",
+      "sha256": "658aa3c61e07d6e85b2801e0020a95888b8e56aada69b0405caa24b043d714a1",
+      "bytes": 9201,
+      "lines": 77
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/module-adjacency-v2.md",
+      "relative_path": "docs/architecture/module-adjacency-v2.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/module-adjacency-v2.md",
+      "sha256": "f5a04ac1085fb98a6b1e8e27f00441f7441217eda302f4a6c1c091ae53aeeee3",
+      "bytes": 4320,
+      "lines": 59
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/sql/core-chain-v3.sql",
+      "relative_path": "docs/architecture/sql/core-chain-v3.sql",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/sql/core-chain-v3.sql",
+      "sha256": "f510808587008f79cf18507effbd9afe16d9d705b00aa612ad1b13abdc2fa483",
+      "bytes": 8291,
+      "lines": 238
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/sql/core-constraints-v2.sql",
+      "relative_path": "docs/architecture/sql/core-constraints-v2.sql",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/sql/core-constraints-v2.sql",
+      "sha256": "0c6bbf6b5000056b71fac32ceadf903dc94c34cb81af6e4eed9884de8c8691fd",
+      "bytes": 4337,
+      "lines": 112
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/schemas/grading-contract-v2.md",
+      "relative_path": "docs/architecture/schemas/grading-contract-v2.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/schemas/grading-contract-v2.md",
+      "sha256": "81a9cee8cb50301a6ced2e6281d3ce00fbe82e20f3daddbf17ece81557a22152",
+      "bytes": 5069,
+      "lines": 80
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/schemas/model-grade-payload-1.0.0.schema.json",
+      "relative_path": "docs/architecture/schemas/model-grade-payload-1.0.0.schema.json",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/schemas/model-grade-payload-1.0.0.schema.json",
+      "sha256": "a2221fba2313d863bc1b6b333250f33c53fa030f012789a44cadecea4f9b7424",
+      "bytes": 2845,
+      "lines": 79
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/schemas/acceptance-envelope-1.0.0.schema.json",
+      "relative_path": "docs/architecture/schemas/acceptance-envelope-1.0.0.schema.json",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/schemas/acceptance-envelope-1.0.0.schema.json",
+      "sha256": "fed2ed429e368a9062a590e69999146d981494930db0d1194ff9e7272bfb3c3f",
+      "bytes": 1221,
+      "lines": 30
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/schemas/grading-result-1.0.0.schema.json",
+      "relative_path": "docs/architecture/schemas/grading-result-1.0.0.schema.json",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/architecture/schemas/grading-result-1.0.0.schema.json",
+      "sha256": "e6af630972c043f3d19d00fd804608c56b0846de0cf1d32681120c1d491d94ab",
+      "bytes": 397,
+      "lines": 7
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-001-tenant-composite-fk-rls.md",
+      "relative_path": "docs/decisions/ADR-001-tenant-composite-fk-rls.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-001-tenant-composite-fk-rls.md",
+      "sha256": "e24dc6e52720c03e58be5169f81b8b0aec94e9af03ca1697aef7d8f3906f4693",
+      "bytes": 3545,
+      "lines": 53,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-002-module-ownership-uow.md",
+      "relative_path": "docs/decisions/ADR-002-module-ownership-uow.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-002-module-ownership-uow.md",
+      "sha256": "beaeb66e20f2ba56842ca77eaf655d3086748a6464f99d26a9c34cd2c07d8828",
+      "bytes": 2381,
+      "lines": 44,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-003-ai-result-acceptance.md",
+      "relative_path": "docs/decisions/ADR-003-ai-result-acceptance.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-003-ai-result-acceptance.md",
+      "sha256": "6b23f802446fd4968adf442765f08453087add965db450b09f70f8cf59fa60b1",
+      "bytes": 2254,
+      "lines": 49,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-004-bullmq-python-worker.md",
+      "relative_path": "docs/decisions/ADR-004-bullmq-python-worker.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-004-bullmq-python-worker.md",
+      "sha256": "e20d87b5238e9bca35406627c54e398da20bbf59bae0051967e8ab39ed7850ce",
+      "bytes": 2679,
+      "lines": 51,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-005-outbox-inbox-object-finalize.md",
+      "relative_path": "docs/decisions/ADR-005-outbox-inbox-object-finalize.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-005-outbox-inbox-object-finalize.md",
+      "sha256": "638ad4423d927a8d6dac0c921a21e83c949b2b4e817e02f5a749956b12510ed0",
+      "bytes": 2341,
+      "lines": 42,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-006-freeze-and-score-versions.md",
+      "relative_path": "docs/decisions/ADR-006-freeze-and-score-versions.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-006-freeze-and-score-versions.md",
+      "sha256": "ef59274610094c22778a037f3df64f64c787d87e9498f2e70a215ea172fd2ccc",
+      "bytes": 2656,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-007-review-publish-absence.md",
+      "relative_path": "docs/decisions/ADR-007-review-publish-absence.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-007-review-publish-absence.md",
+      "sha256": "ee5e9de9b0bf5eda50dba410da1db96d919fc4a302bbfe7b03814d9388bca8ca",
+      "bytes": 3142,
+      "lines": 51,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-008-postgres-knowledge-graph.md",
+      "relative_path": "docs/decisions/ADR-008-postgres-knowledge-graph.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-008-postgres-knowledge-graph.md",
+      "sha256": "50c5797bfbd14953a80112e2065550b06cf643a7fe63ca144e1dd14cca81fd4f",
+      "bytes": 2011,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-009-object-storage-auth.md",
+      "relative_path": "docs/decisions/ADR-009-object-storage-auth.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-009-object-storage-auth.md",
+      "sha256": "9f3708483cac4094acdf9cc3d23fd5dbc3c184d2f39460c8cada6a3f845a116f",
+      "bytes": 2349,
+      "lines": 49,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-010-env-backup-migration.md",
+      "relative_path": "docs/decisions/ADR-010-env-backup-migration.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-010-env-backup-migration.md",
+      "sha256": "879242450ee4e5460c99f1ddb75f1c6ae31ca015d0bd0f8508753f8be579af62",
+      "bytes": 2373,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-011-temporal-roster-snapshot.md",
+      "relative_path": "docs/decisions/ADR-011-temporal-roster-snapshot.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-011-temporal-roster-snapshot.md",
+      "sha256": "4ddd7bc1aa8c5bcee89ea645776c0e3946441130fdca213f430b1c075d9e22a3",
+      "bytes": 2553,
+      "lines": 49,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-012-quota-tenant-lifecycle.md",
+      "relative_path": "docs/decisions/ADR-012-quota-tenant-lifecycle.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "0b783094d33d3df1db1ae3204e507d934e57aed2950343ae0de3b89644c76fca",
+      "bytes": 2815,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-013-ai-schema-lineage-calibration.md",
+      "relative_path": "docs/decisions/ADR-013-ai-schema-lineage-calibration.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-013-ai-schema-lineage-calibration.md",
+      "sha256": "23a3ae1b64a9a0522ad46e806fb03be473d328582f397ccfd15d5217ecdfade5",
+      "bytes": 2835,
+      "lines": 50,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-014-data-duty-retention.md",
+      "relative_path": "docs/decisions/ADR-014-data-duty-retention.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-014-data-duty-retention.md",
+      "sha256": "d3d842a9601e7e82167dc878b45c19d40c5e38ada4e1de3719ae5b06209b7a2b",
+      "bytes": 2805,
+      "lines": 53,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-015-source-milestone-placement.md",
+      "relative_path": "docs/decisions/ADR-015-source-milestone-placement.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/decisions/ADR-015-source-milestone-placement.md",
+      "sha256": "6c0a2ee0cbb412994115c327326fc4b8e332038926a0078f8ddb72432c25051c",
+      "bytes": 2798,
+      "lines": 53,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/quality-reports/g0-design-response-v4.md",
+      "relative_path": "docs/quality-reports/g0-design-response-v4.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/quality-reports/g0-design-response-v4.md",
+      "sha256": "f5a528218c4b12e305b69ff6e10a79e130327a87ea24c004e31b05a512b6c49e",
+      "bytes": 1212,
+      "lines": 23
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/quality-reports/architecture-findings-tracker.md",
+      "relative_path": "docs/quality-reports/architecture-findings-tracker.md",
+      "snapshot_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/work/architecture-review-v4-inputs/docs/quality-reports/architecture-findings-tracker.md",
+      "sha256": "84a5aa14928789e6b656782ff3b85251a875052c53846e3ff289d17d0e61d8cc",
+      "bytes": 9000,
+      "lines": 97
+    }
+  ],
+  "original_checks": [
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/product/requirement-decisions-v0.1-v0.28.md",
+      "sha256": "cc5422fdac013f1f6cc9448ae0921d2a789071307d4842cf4a562249295c2388",
+      "matches_previous": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/product/requirements-v1.0-original.md",
+      "sha256": "e61362db53450a8d337037085fc83adb335ba7748fea4090a7d8254460f6dc63",
+      "matches_previous": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/architecture-v1.0-original.md",
+      "sha256": "904ff3d9bb505b9df5f30347ef8d3191728c3859cebd18fde57c56f9af86872b",
+      "matches_previous": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/quality-reports/architecture-review-report.md",
+      "sha256": "d9add906755d4875d70eb66100462b7f2ee2ee48f368650cc442609130904941",
+      "matches_previous": true
+    }
+  ],
+  "provided_snapshot_checks": [
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/ADR-001-tenant-composite-fk-rls.md",
+      "sha256": "a6a7872751440ace7c6d658dc32f25396d68c486a748a919e2d1176a36ad0ab8",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/ADR-004-bullmq-python-worker.md",
+      "sha256": "583a4f98dfeb9574e2229f741ef2a3ddb880d088aaee241516f568fe6f21dede",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/ADR-007-review-publish-absence.md",
+      "sha256": "ee5e9de9b0bf5eda50dba410da1db96d919fc4a302bbfe7b03814d9388bca8ca",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "87a4ae8cac35047a034a10eecbb8d4f3a690845acbaec8cb38f3d8fa1cab7be1",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/architecture-findings-tracker.md",
+      "sha256": "776aed706afcc9356b96ad236bb1a5fb2cdc3830abf0881de07cb4c8a26a07aa",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/authorization-matrix-v2.md",
+      "sha256": "c2d31b759f20d62eadce00d878128dd8081447927ddda92b53996ddbad6ace38",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/core-chain-v3.sql",
+      "sha256": "4487da27e2b4430652bc7b5ac549acd914a2ba1d3631be2e4139951b176e10cf",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/current-contract-index-v3.md",
+      "sha256": "4e378cdaf971e0c91d6848fcda26f5bdb9bdfaa19c842051b739cd091cadcbc2",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/data-dictionary.md",
+      "sha256": "543a2e47b4b0d53b69a51e26b0695ed017474bd1a6309883db0b615fb1e60c7e",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/g0-design-response-v3.md",
+      "sha256": "5b59870f71cfb735e65685d443284686d0974a85e2fc865cee2aa0318c8acc62",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/grading-contract-v2.md",
+      "sha256": "0065a2761942508a75e3e520ae8f610aa0823ef4ac55eeb98c963fc63a673226",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/module-adjacency-v2.md",
+      "sha256": "e5738475f3fd49957e7f66438ea2f019976fb9f649f7b3326c1ef22668aad529",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/review-remediation-v3.md",
+      "sha256": "f29774cd401815778798ece68c4e97994710693a0e4737a664b76e4144341305",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/state-transitions.md",
+      "sha256": "c5a29c6455af128edd7f499baef332bb6f18b9e80605cc6fe55e13e11c868dc6",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/snapshots/zx-des-20261012-03/transaction-boundaries.md",
+      "sha256": "4f31647398fb4f0ac9275d417380400d4d82298935632d65ac83700ebb847e48",
+      "matches_manifest": true,
+      "matches_previous_review": true
+    }
+  ],
+  "json_schema_checks": [
+    {
+      "name": "model-grade-payload-1.0.0.schema.json",
+      "parse": "passed",
+      "matches_previous": true
+    },
+    {
+      "name": "acceptance-envelope-1.0.0.schema.json",
+      "parse": "passed",
+      "matches_previous": true
+    },
+    {
+      "name": "grading-result-1.0.0.schema.json",
+      "parse": "passed",
+      "matches_previous": true
+    }
+  ],
+  "envelope_ref_resolves_locally": true,
+  "static_sql_target_checks": {
+    "type": "regex extraction from illustrative SQL; not migration execution",
+    "fk_count": 13,
+    "all_targets_have_matching_explicit_unique": true,
+    "details": [
+      {
+        "fk": "fk_generation_page_set",
+        "source_table": "submission_generations",
+        "source_columns": [
+          "tenant_id",
+          "submission_id",
+          "page_set_id"
+        ],
+        "target_table": "submission_page_sets",
+        "target_columns": [
+          "tenant_id",
+          "submission_id",
+          "id"
+        ],
+        "matching_unique": [
+          "uq_page_sets_id"
+        ]
+      },
+      {
+        "fk": "fk_link_participation",
+        "source_table": "participation_roster_links",
+        "source_columns": [
+          "tenant_id",
+          "participation_id",
+          "exam_id",
+          "student_id"
+        ],
+        "target_table": "exam_participations",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "exam_id",
+          "student_id"
+        ],
+        "matching_unique": [
+          "uq_participation_id_exam_student"
+        ]
+      },
+      {
+        "fk": "fk_link_entry",
+        "source_table": "participation_roster_links",
+        "source_columns": [
+          "tenant_id",
+          "roster_version_id",
+          "roster_entry_id",
+          "exam_id",
+          "student_id"
+        ],
+        "target_table": "exam_roster_entries",
+        "target_columns": [
+          "tenant_id",
+          "roster_version_id",
+          "id",
+          "exam_id",
+          "student_id"
+        ],
+        "matching_unique": [
+          "uq_roster_entry_student"
+        ]
+      },
+      {
+        "fk": "fk_decision_participation",
+        "source_table": "match_decisions",
+        "source_columns": [
+          "tenant_id",
+          "participation_id",
+          "exam_id",
+          "paper_version_id"
+        ],
+        "target_table": "exam_participations",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "exam_id",
+          "paper_version_id"
+        ],
+        "matching_unique": [
+          "uq_participation_paper"
+        ]
+      },
+      {
+        "fk": "fk_decision_submission",
+        "source_table": "match_decisions",
+        "source_columns": [
+          "tenant_id",
+          "submission_id",
+          "exam_id",
+          "paper_version_id"
+        ],
+        "target_table": "submissions",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "exam_id",
+          "frozen_paper_version_id"
+        ],
+        "matching_unique": [
+          "uq_submission_frozen"
+        ]
+      },
+      {
+        "fk": "fk_binding_generation",
+        "source_table": "matching_bindings",
+        "source_columns": [
+          "tenant_id",
+          "generation_id",
+          "submission_id"
+        ],
+        "target_table": "submission_generations",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "submission_id"
+        ],
+        "matching_unique": [
+          "uq_generations_id"
+        ]
+      },
+      {
+        "fk": "fk_binding_decision",
+        "source_table": "matching_bindings",
+        "source_columns": [
+          "tenant_id",
+          "match_decision_id",
+          "submission_id",
+          "exam_id",
+          "participation_id",
+          "paper_version_id"
+        ],
+        "target_table": "match_decisions",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "submission_id",
+          "exam_id",
+          "participation_id",
+          "paper_version_id"
+        ],
+        "matching_unique": [
+          "uq_match_decision"
+        ]
+      },
+      {
+        "fk": "fk_answer_binding",
+        "source_table": "answer_revisions",
+        "source_columns": [
+          "tenant_id",
+          "binding_id",
+          "generation_id",
+          "submission_id",
+          "exam_id",
+          "participation_id",
+          "paper_version_id"
+        ],
+        "target_table": "matching_bindings",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "generation_id",
+          "submission_id",
+          "exam_id",
+          "participation_id",
+          "paper_version_id"
+        ],
+        "matching_unique": [
+          "uq_binding_answer_target"
+        ]
+      },
+      {
+        "fk": "fk_answer_question",
+        "source_table": "answer_revisions",
+        "source_columns": [
+          "tenant_id",
+          "paper_version_id",
+          "paper_question_id"
+        ],
+        "target_table": "paper_questions",
+        "target_columns": [
+          "tenant_id",
+          "paper_version_id",
+          "id"
+        ],
+        "matching_unique": [
+          "uq_paper_question"
+        ]
+      },
+      {
+        "fk": "fk_review_answer",
+        "source_table": "human_reviews",
+        "source_columns": [
+          "tenant_id",
+          "answer_revision_id",
+          "participation_id",
+          "paper_version_id",
+          "paper_question_id"
+        ],
+        "target_table": "answer_revisions",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "participation_id",
+          "paper_version_id",
+          "paper_question_id"
+        ],
+        "matching_unique": [
+          "uq_answer_slot"
+        ]
+      },
+      {
+        "fk": "fk_published_item_version",
+        "source_table": "score_version_items",
+        "source_columns": [
+          "tenant_id",
+          "score_version_id",
+          "participation_id",
+          "exam_id",
+          "paper_version_id"
+        ],
+        "target_table": "score_versions",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "participation_id",
+          "exam_id",
+          "paper_version_id"
+        ],
+        "matching_unique": [
+          "uq_score_version_chain"
+        ]
+      },
+      {
+        "fk": "fk_published_item_slot",
+        "source_table": "score_version_items",
+        "source_columns": [
+          "tenant_id",
+          "paper_version_id",
+          "paper_question_id"
+        ],
+        "target_table": "paper_questions",
+        "target_columns": [
+          "tenant_id",
+          "paper_version_id",
+          "id"
+        ],
+        "matching_unique": [
+          "uq_paper_question"
+        ]
+      },
+      {
+        "fk": "fk_published_item_review",
+        "source_table": "score_version_items",
+        "source_columns": [
+          "tenant_id",
+          "review_id",
+          "participation_id",
+          "paper_version_id",
+          "paper_question_id"
+        ],
+        "target_table": "human_reviews",
+        "target_columns": [
+          "tenant_id",
+          "id",
+          "participation_id",
+          "paper_version_id",
+          "paper_question_id"
+        ],
+        "matching_unique": [
+          "uq_review_slot"
+        ]
+      }
+    ]
+  },
+  "paper_trace": {
+    "type": "specification counterexample; not implementation test",
+    "original_invocation_attempt": "A",
+    "recovered_current_attempt": "B",
+    "ordinary_acceptance_attempt_match": false,
+    "required_resolution": "explicit trusted result adoption preserving lineage, or manual exception; fee confirmation alone must not cause business success"
+  },
+  "runtime_checks": "not_run: database, Redis, BullMQ, object storage, provider, migration, dual schema, backups, school samples; no dependency installation",
+  "findings_by_severity": {
+    "Blocker": 0,
+    "Critical": 1,
+    "Major": 1,
+    "Minor": 0
+  },
+  "findings": [
+    {
+      "id": "R5-01",
+      "severity": "Critical",
+      "title": "Unknown 结算后的业务恢复与调用归属仍不闭合"
+    },
+    {
+      "id": "R5-02",
+      "severity": "Major",
+      "title": "Queued、binding 和重排状态的表格仍不一致"
+    }
+  ],
+  "previous_design_disposition": {
+    "R4-01": "design_passed_pending_decision",
+    "R4-02": "design_passed_pending_decision",
+    "R4-03": "partially_addressed",
+    "R4-04": "design_passed_with_followups"
+  },
+  "g0": "No-Go for complete G0; original restricted preimplementation permission remains",
+  "external_references": [
+    "https://www.postgresql.org/docs/16/ddl-constraints.html",
+    "https://www.postgresql.org/docs/16/functions-info.html"
+  ]
+}

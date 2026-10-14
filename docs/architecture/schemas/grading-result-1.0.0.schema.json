@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixue.local/schemas/grading-result/1.0.0",
+  "$comment": "WITHDRAWN on 2026-10-12 before any Accepted release or deployment. Superseded by model-grade-payload/1.0.0 plus acceptance-envelope/1.0.0. Do not implement. No compatibility window is required.",
+  "title": "WITHDRAWN grading-result 1.0.0",
+  "not": true
+}

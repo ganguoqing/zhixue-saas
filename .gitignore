@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+var/
+__pycache__/
+.venv/
+*.pyc
+.pytest_cache/
+coverage/
+*.log

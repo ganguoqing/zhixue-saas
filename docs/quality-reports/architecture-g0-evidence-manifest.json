@@ -1,0 +1,300 @@
+{
+  "report_id": "ZX-AR-20261012-02",
+  "review_date_local": "2026-10-12",
+  "review_timezone": "Asia/Shanghai",
+  "scope": "Independent G0 design review; sources read only; no ADR acceptance or implementation approval",
+  "source_files": [
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/review-remediation-v1.md",
+      "sha256": "988720147fb334fbb45d2a1d103f8d62b6b15a93756d16809e011bed4f710584",
+      "bytes": 39773,
+      "lines": 459
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/data-dictionary.md",
+      "sha256": "657c939b09324b206427f4320ab4bafa5a12dfa35c87316f02096bd762d01b8d",
+      "bytes": 33326,
+      "lines": 350
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/state-transitions.md",
+      "sha256": "948c69c2e527d325a0b84ecb81c5cbd656861bb687fa5282b40acbec411e85b6",
+      "bytes": 20224,
+      "lines": 201
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/transaction-boundaries.md",
+      "sha256": "e1694cb1dc5249683181027f767e22d77b35be1397e9bf4c4ec05ebb31cea967",
+      "bytes": 9487,
+      "lines": 161
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/schemas/grading-result-1.0.0.schema.json",
+      "sha256": "a86b394d7121e9bd02c484891c2745d7f9d04a25213e6d98711c2cd7b3af2650",
+      "bytes": 3835,
+      "lines": 112
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-001-tenant-composite-fk-rls.md",
+      "sha256": "7a4aa8ae40850380b51b83412795ba12fd6bd44e4b83a2a41588c0959046dcac",
+      "bytes": 2812,
+      "lines": 52,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-002-module-ownership-uow.md",
+      "sha256": "d47bd0f7a116e0a1c6c5ec7bad2374287cf038709996b284154d4f8c49996c3a",
+      "bytes": 1901,
+      "lines": 43,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-003-ai-result-acceptance.md",
+      "sha256": "cc918eab789ad5007940fa265f09f45a8a3df722521ce378db7d0323231ac7af",
+      "bytes": 1851,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-004-bullmq-python-worker.md",
+      "sha256": "2205096c5f8054176f09103796f9ff5fdc7caffe7bebeacebd8d8a07a1630b14",
+      "bytes": 2258,
+      "lines": 50,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-005-outbox-inbox-object-finalize.md",
+      "sha256": "ee55522ebf8c76cb67bd0433d7b2004fc513bf421658e9cc2839736aa217fec6",
+      "bytes": 1797,
+      "lines": 41,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-006-freeze-and-score-versions.md",
+      "sha256": "b4d5449b72ee5698adb854efd7818dd70cc6a74d7f74c91a10e1e3afc3c317e3",
+      "bytes": 2283,
+      "lines": 47,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-007-review-publish-absence.md",
+      "sha256": "ba6b9f627ee22ebdbc338e7e7077c4b38ba1372b35fc65e2151a0034fbe3ce01",
+      "bytes": 2573,
+      "lines": 50,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-008-postgres-knowledge-graph.md",
+      "sha256": "7a0b44b5d147fc64f8439c727be2e2265db5bf581c5ed99237f2cb943740da08",
+      "bytes": 1821,
+      "lines": 47,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-009-object-storage-auth.md",
+      "sha256": "81104e7efb8c66e54b9de6b2b198f71969f845f5e36a6ff97ec218263cc7fd5a",
+      "bytes": 2065,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-010-env-backup-migration.md",
+      "sha256": "2658acda30f85f800498aeeb573054e378ef9a895702f27a16a60869ff2950d3",
+      "bytes": 2129,
+      "lines": 47,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-011-temporal-roster-snapshot.md",
+      "sha256": "1188f20cbd49e2b76c3c764fa71a7120f7bea52bfc147107fb370dc9fe3730a2",
+      "bytes": 2263,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "07bdc0b41c4651c8264e11010f9700a164e232a03638c08a07c578bcde1a13bc",
+      "bytes": 2259,
+      "lines": 48,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-013-ai-schema-lineage-calibration.md",
+      "sha256": "3317b127e0c87bbc6f9c6c8f53ffe0523416903231632125d8ad0cd89cb6cd54",
+      "bytes": 2355,
+      "lines": 49,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-014-data-duty-retention.md",
+      "sha256": "913ec24bbb47583ef8414d9927fc7d20d9d82c98feb0e0053849def9f041159a",
+      "bytes": 2542,
+      "lines": 52,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/decisions/ADR-015-source-milestone-placement.md",
+      "sha256": "ceafda2425cc3a94755472193689b4de0ce8e52b6a0dca7c9b0c91d913056c79",
+      "bytes": 2569,
+      "lines": 52,
+      "status": "Proposed"
+    },
+    {
+      "path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/quality-reports/architecture-findings-tracker.md",
+      "sha256": "2edbd273aedbe0bb0b4f3b221dc25133e949fc18848a95bdea4f8587722c790b",
+      "bytes": 17435,
+      "lines": 272
+    }
+  ],
+  "original_preservation_checks": [
+    {
+      "repo_path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/product/requirement-decisions-v0.1-v0.28.md",
+      "starter_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/outputs/cursor-g0-starter/docs/product/requirement-decisions-v0.1-v0.28.md",
+      "byte_equal": true,
+      "sha256": "cc5422fdac013f1f6cc9448ae0921d2a789071307d4842cf4a562249295c2388"
+    },
+    {
+      "repo_path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/product/requirements-v1.0-original.md",
+      "starter_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/outputs/cursor-g0-starter/docs/product/requirements-v1.0-original.md",
+      "byte_equal": true,
+      "sha256": "e61362db53450a8d337037085fc83adb335ba7748fea4090a7d8254460f6dc63"
+    },
+    {
+      "repo_path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/architecture/architecture-v1.0-original.md",
+      "starter_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/outputs/cursor-g0-starter/docs/architecture/architecture-v1.0-original.md",
+      "byte_equal": true,
+      "sha256": "904ff3d9bb505b9df5f30347ef8d3191728c3859cebd18fde57c56f9af86872b"
+    },
+    {
+      "repo_path": "/Users/johnny/Documents/GitHub/zhixue-saas/docs/quality-reports/architecture-review-report.md",
+      "starter_path": "/Users/johnny/Documents/Codex/2026-10-11/referenced-chatgpt-conversation-this-is-an-2/outputs/cursor-g0-starter/docs/quality-reports/architecture-review-report.md",
+      "byte_equal": true,
+      "sha256": "d9add906755d4875d70eb66100462b7f2ee2ee48f368650cc442609130904941"
+    }
+  ],
+  "static_probes": {
+    "json_parse": "passed",
+    "score_regex_probes": [
+      {
+        "input": "0.00",
+        "regex_accepts": true
+      },
+      {
+        "input": "8.00",
+        "regex_accepts": true
+      },
+      {
+        "input": "9999.99",
+        "regex_accepts": true
+      },
+      {
+        "input": "10000.00",
+        "regex_accepts": false
+      },
+      {
+        "input": "-1.00",
+        "regex_accepts": false
+      },
+      {
+        "input": "8",
+        "regex_accepts": false
+      },
+      {
+        "input": "8.0",
+        "regex_accepts": false
+      },
+      {
+        "input": "08.00",
+        "regex_accepts": false
+      },
+      {
+        "input": "NaN",
+        "regex_accepts": false
+      },
+      {
+        "input": "8x00",
+        "regex_accepts": false
+      }
+    ],
+    "full_draft_2020_12_validation": "not_run; jsonschema unavailable in checked Python environments; no dependency installation",
+    "postgresql_rls_and_constraints_runtime": "not_run; design reasoning corroborated by official documentation",
+    "redis_bullmq_storage_provider_backup_tests": "not_run"
+  },
+  "findings_by_severity": {
+    "Blocker": 2,
+    "Critical": 8,
+    "Major": 3,
+    "Minor": 0
+  },
+  "new_findings": [
+    {
+      "id": "G0-01",
+      "severity": "Blocker",
+      "title": "可空复合外键与精确目标约束不成立"
+    },
+    {
+      "id": "G0-02",
+      "severity": "Blocker",
+      "title": "后台 RLS 身份与租户建立路径缺失"
+    },
+    {
+      "id": "G0-03",
+      "severity": "Critical",
+      "title": "不可变事实与状态迁移写权限冲突"
+    },
+    {
+      "id": "G0-04",
+      "severity": "Critical",
+      "title": "名单、页与匹配不能按新世代保存"
+    },
+    {
+      "id": "G0-05",
+      "severity": "Critical",
+      "title": "总分与非 AI 来源没有统一发布契约"
+    },
+    {
+      "id": "G0-06",
+      "severity": "Critical",
+      "title": "异常恢复存在不可达或缺失的状态边"
+    },
+    {
+      "id": "G0-07",
+      "severity": "Critical",
+      "title": "接纳 CAS、拒绝副作用与重放语义不完整"
+    },
+    {
+      "id": "G0-08",
+      "severity": "Critical",
+      "title": "付费调用前没有持久意图与对账生命周期"
+    },
+    {
+      "id": "G0-09",
+      "severity": "Critical",
+      "title": "派生版本栅栏与多考试证据集合不兼容"
+    },
+    {
+      "id": "G0-10",
+      "severity": "Major",
+      "title": "并发上限不足以定义公平，阶段预留有歧义"
+    },
+    {
+      "id": "G0-11",
+      "severity": "Critical",
+      "title": "模型输出与服务信封混用，评分语义未可判定"
+    },
+    {
+      "id": "G0-12",
+      "severity": "Major",
+      "title": "G0/G1 混用，追踪表缺少设计复验状态"
+    },
+    {
+      "id": "G0-13",
+      "severity": "Major",
+      "title": "模块依赖图与真实公开命令调用相反"
+    }
+  ],
+  "external_references": [
+    "https://www.postgresql.org/docs/current/ddl-constraints.html",
+    "https://www.postgresql.org/docs/current/ddl-rowsecurity.html"
+  ]
+}

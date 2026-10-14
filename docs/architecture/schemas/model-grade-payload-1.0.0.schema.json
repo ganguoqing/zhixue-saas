@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixue.local/schemas/model-grade-payload/1.0.0",
+  "$comment": "Untrusted model output only. No lease, generation, job id, or provider identity. Proposed 2026-10-12. Supersedes the combined grading-result/1.0.0 draft, which was never accepted.",
+  "title": "ModelGradePayload 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "items"],
+  "properties": {
+    "schema_version": { "const": "model-grade-payload/1.0.0" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/item" }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper_question_id", "recognized_answer", "suggested_score", "criterion_awards", "evidence"],
+      "properties": {
+        "paper_question_id": { "type": "string", "format": "uuid" },
+        "recognized_answer": { "type": "string", "maxLength": 20000 },
+        "suggested_score": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,3})\\.[0-9]{2}$" },
+        "criterion_awards": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/award" }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "award": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["criterion_id", "awarded_points"],
+      "properties": {
+        "criterion_id": { "type": "string", "format": "uuid" },
+        "awarded_points": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,3})\\.[0-9]{2}$" },
+        "reason": { "type": "string", "maxLength": 2000 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_asset_id", "page_index"],
+      "properties": {
+        "source_asset_id": { "type": "string", "format": "uuid" },
+        "page_index": { "type": "integer", "minimum": 1 },
+        "bbox": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "number", "minimum": 0, "maximum": 1 },
+            { "type": "number", "minimum": 0, "maximum": 1 },
+            { "type": "number", "minimum": 0, "maximum": 1 },
+            { "type": "number", "minimum": 0, "maximum": 1 }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "ocr_span": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": { "type": "integer", "minimum": 0 },
+            "end": { "type": "integer", "minimum": 1 }
+          }
+        }
+      },
+      "anyOf": [{ "required": ["bbox"] }, { "required": ["ocr_span"] }]
+    }
+  }
+}

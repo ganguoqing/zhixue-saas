@@ -1,0 +1,45 @@
+# ADR-002 模块化单体的表所有权、命令与 Unit of Work
+
+- **状态：** Proposed（2026-10-12 修订，未签署）
+- **2026-10-13 M0 范围：** 项目负责人在对话中批准决议清单第 2 节对本 ADR「建议批准」列的条款，并接受第 3 节保守恢复政策。见 `g0-decision-record-20261013.md`。同表「仍保留待定」列和未列入的未来细节仍是 Proposed。本 ADR 整体不是 Accepted。
+- **日期：** 2026-10-11；修订 2026-10-12
+- **2026-10-12：** v1 依赖箭头图作废。现行邻接以 `module-adjacency-v2.md` 为准：调用方指向被调用方；orchestration 不 import grading/submission。同日 v3：命令名是 `AcceptGradeResult`，新表 owner 见契约索引。状态仍是 Proposed。
+- **决策责任：** 项目负责人
+- **关联：** R19、R20；F07
+- **证据：** R19 已确认 NestJS 模块化单体，不是待选建议。表所有权与 Unit of Work 尚未决议。
+
+## 问题
+
+架构初稿的目录不能阻止模块互写 repository，也不能阻止一个服务包揽全部事务。
+
+## 方案
+
+### A. 推荐：一表一写模块，跨模块只走公开命令
+
+数据字典第 4 节和 `current-contract-index-v3.md` 为每张表指定 owner。协调者开启一个 PostgreSQL 事务，参与者通过公开命令登记写入。`common` 只有技术原语。组合根负责把 Worker 入口接到 `grading.AcceptGradeResult`、`submission.AcceptRecognition` 或 `submission.AcceptValidation`。orchestration 不导入这些模块的内部代码。`AcceptAIResult` 不是现行命令名。
+
+依赖方向见修复稿第 4 节，不允许环，不允许跨模块引用内部 repository。内部命令仍检查授权与不变量。
+
+### B. 共享数据库模块，大家直接改表
+
+实现快，模块边界会在第一次联调时消失。不推荐。
+
+### C. 拆成多个微服务
+
+与 R19“第一阶段不拆大量微服务”冲突。不推荐。
+
+## 代价
+
+公开命令会比直接调 repository 多一层。事务参与者必须接受调用方的 Unit of Work，不能各自 `commit`。需要后续用依赖规则检查目录，这项检查还未建立。
+
+## 兼容与回退
+
+这是代码边界，不改变已确认技术栈。若某个命令证明过宽，可以再拆公开命令，不应退回互写表。
+
+## 故障模型
+
+内部调用绕过授权、循环依赖、编排服务直接更新成绩表。验收时用架构检查与越权用例，而不是只看目录名字。
+
+## 验收
+
+所有权矩阵与依赖图和代码导入一致；跨模块 repository 引用被检查拒绝；`AcceptGradeResult` 与 `PublishScoreVersion` 的协调者是 grading，且 Worker 角色写不成正式分。
