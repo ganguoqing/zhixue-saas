@@ -1,0 +1,56 @@
+{
+  "scope": "Source logic only with HTTP doubles; no provider requests",
+  "provider_http_500_sent_to_accept_as_ok_true": [
+    {
+      "route": "/infer",
+      "json": {
+        "job_id": "synthetic-job",
+        "input_hash": "synthetic-hash",
+        "fail": false
+      }
+    },
+    {
+      "route": "/internal/jobs/accept",
+      "json": {
+        "jobId": "synthetic-job",
+        "attemptId": "synthetic-attempt",
+        "fencingEpoch": 1,
+        "leaseToken": "synthetic-lease",
+        "generation": 1,
+        "inputHash": "synthetic-hash",
+        "ok": true
+      }
+    }
+  ],
+  "billable_HTTP_without_precommitted_send_permit": [
+    {
+      "route": "/internal/jobs/prepare-invocation",
+      "json": {
+        "jobId": "synthetic-job",
+        "attemptId": "synthetic-attempt"
+      }
+    },
+    {
+      "route": "/infer",
+      "json": {
+        "job_id": "synthetic-job",
+        "input_hash": "synthetic-hash",
+        "delay_seconds": null
+      }
+    },
+    {
+      "route": "/internal/jobs/accept",
+      "json": {
+        "jobId": "synthetic-job",
+        "attemptId": "synthetic-attempt",
+        "fencingEpoch": 1,
+        "leaseToken": "synthetic-lease",
+        "generation": 1,
+        "inputHash": "synthetic-hash",
+        "ok": true
+      }
+    }
+  ],
+  "worker_can_mint_billing_and_reconciler_scopes": true,
+  "worker_token_has_expiration": false
+}

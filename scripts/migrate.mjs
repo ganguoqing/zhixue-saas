@@ -24,7 +24,7 @@ async function ensureRole(client, name, attrs, password) {
   const passSql = password ? ` PASSWORD '${password.replaceAll("'", "''")}'` : '';
   if (existing.rowCount === 0) {
     await client.query(`CREATE ROLE ${safe} ${attrs}${passSql}`);
-  } else if (password) {
+  } else if (password && process.env.ZHIXUE_PRESERVE_ROLE_PASSWORDS !== '1') {
     await client.query(`ALTER ROLE ${safe} ${attrs}${passSql}`);
   }
 }
@@ -62,6 +62,15 @@ async function bootstrap() {
   }
 }
 
+function assertResetAllowed() {
+  if (!args.has('--reset')) return;
+  const db = process.env.PGDATABASE || '';
+  const isolated = db.startsWith('zhixue_m0_g1');
+  if (!isolated && process.env.ZHIXUE_ALLOW_SHARED_RESET !== '1') {
+    throw new Error(`refusing schema reset on ${db}; use an isolated zhixue_m0_g1* database`);
+  }
+}
+
 async function apply() {
   const client = new Client({ connectionString: roleUrl('zhixue_migrator', 'ZHIXUE_MIGRATOR_PASSWORD') });
   await client.connect();
@@ -71,20 +80,23 @@ async function apply() {
     for (const file of files) {
       const version = file.slice(0, 4);
       if (only && version !== only) continue;
-      const applied = await client.query(
-        `SELECT to_regclass('zhixue_ctl.schema_migrations') AS rel`,
-      );
-      if (applied.rows[0].rel) {
-        const row = await client.query(
-          'SELECT 1 FROM zhixue_ctl.schema_migrations WHERE version = $1',
-          [version],
-        );
-        if (row.rowCount > 0) continue;
-      }
       const sql = readFileSync(join(dir, file), 'utf8');
       await client.query('BEGIN');
       try {
         await client.query(`SELECT pg_advisory_xact_lock(hashtext('zhixue_migrate'))`);
+        const applied = await client.query(
+          `SELECT to_regclass('zhixue_ctl.schema_migrations') AS rel`,
+        );
+        if (applied.rows[0].rel) {
+          const row = await client.query(
+            'SELECT 1 FROM zhixue_ctl.schema_migrations WHERE version = $1',
+            [version],
+          );
+          if (row.rowCount > 0) {
+            await client.query('COMMIT');
+            continue;
+          }
+        }
         await client.query(sql);
         await client.query('INSERT INTO zhixue_ctl.schema_migrations (version) VALUES ($1)', [version]);
         await client.query('COMMIT');
@@ -101,6 +113,7 @@ async function apply() {
   }
 }
 
+assertResetAllowed();
 await bootstrap();
 await apply();
 console.log('migrate complete');

@@ -1,0 +1,91 @@
+{
+  "evidenceKind": "source_methods_with_HTTP_doubles_not_provider_integration",
+  "checks": [
+    {
+      "name": "existing_send_unknown_reentered",
+      "providerRequests": 2,
+      "newPermits": 0,
+      "reproduced": true
+    },
+    {
+      "name": "existing_observed_reentered",
+      "providerRequests": 2,
+      "newPermits": 0,
+      "reproduced": true
+    },
+    {
+      "name": "validate_asset_500_no_longer_ok_true",
+      "fixedGuard": true
+    },
+    {
+      "name": "model_grade_500_observed_then_no_envelope",
+      "matches_store_409_counterexample": true,
+      "calls": [
+        {
+          "method": "POST",
+          "route": "/internal/jobs/prepare-invocation",
+          "body": {
+            "jobId": "synthetic-job",
+            "attemptId": "synthetic-attempt"
+          }
+        },
+        {
+          "method": "POST",
+          "route": "/internal/jobs/issue-send-permit",
+          "body": {
+            "jobId": "synthetic-job",
+            "attemptId": "synthetic-attempt",
+            "invocationId": "existing-invocation"
+          }
+        },
+        {
+          "method": "GET",
+          "route": "/internal/jobs/synthetic-job/frozen"
+        },
+        {
+          "method": "POST",
+          "route": "/infer",
+          "body": {
+            "job_id": "synthetic-job",
+            "input_hash": "synthetic-hash",
+            "stage": "model_grade",
+            "delay_seconds": null,
+            "sample": null,
+            "mode": null,
+            "asset_id": "synthetic-asset",
+            "questions": []
+          }
+        },
+        {
+          "method": "POST",
+          "route": "/internal/jobs/record-observation",
+          "body": {
+            "jobId": "synthetic-job",
+            "attemptId": "synthetic-attempt",
+            "invocationId": "existing-invocation",
+            "providerStatus": 500
+          }
+        },
+        {
+          "method": "POST",
+          "route": "/internal/jobs/accept",
+          "body": {
+            "jobId": "synthetic-job",
+            "attemptId": "synthetic-attempt",
+            "fencingEpoch": 1,
+            "leaseToken": "synthetic-lease",
+            "generation": 1,
+            "inputHash": "synthetic-hash",
+            "ok": false,
+            "outcome": "provider_error",
+            "envelope": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "fresh_intent_requests_permit_before_provider",
+      "fixedOrdering": true
+    }
+  ]
+}

@@ -17,6 +17,8 @@
 
 作者不宣布 G0 通过，也不宣布 G1 通过。设计通过不等于运行验证通过。
 
+**2026-10-14 G1 修复记录：** ZX-AR-20261014-01 仍是 No-Go。下面的矩阵只记录开发者这次改了什么、测到什么。`independent_verified` 全部是 `not_run`。没有一项原 Finding 被标成 Closed。
+
 ## G0-01–G0-13
 
 | ID | 严重度 | 原 F | design_review | decision | implementation | verification | v2 位置 |
@@ -120,3 +122,69 @@ RLS 与空租户上下文、名单复合外键拒绝、应用连接池、三次�
 ## 仍未运行
 
 Docker Compose 所写的 PostgreSQL 16.10、CI 工作流、真实模型供应商、生产备份演练、学校样本、公平调度、R5-02 的绑定负例、完整阅卷、真实学生数据和生产部署。以上不能写成 Verified。
+
+## 2026-10-14 G1-01–10 开发者矩阵
+
+设计来自现行 v5 契约。范围来自 2026-10-13 决议。独立验证留给下一轮 Architecture Review。`developer_tested` 只表示 `tests/m0/g1.integration.test.mjs` 这次隔离运行碰到的行为。
+
+| ID | design | accepted_scope | m0_implemented | developer_tested | independent_verified | future_milestone |
+|---|---|---|---|---|---|---|
+| G1-01 | 校内 action/class/subject/当前 membership | M0 | 写入和重放前检查；终态 cancel 返回 409 与实际状态 | 同校无范围读/取消 403；成功任务取消 409 `succeeded`。撤权和手工草稿一次未在这次运行中断言 | not_run | 不进入 M1 |
+| G1-02 | IssueSendPermit 后才能 HTTP | M0 保守 unknown | 许可 epoch CAS；超时留下 send_unknown | 付费 mock 超时后任务进入 `awaiting_settlement`。进程杀死窗口和双恢复者未跑 | not_run | 不自动第二次付费 |
+| G1-03 | 接纳绑定真实 invocation | M0 | 控制字段和 job/attempt/invocation 一致才接纳 | 令牌 attempt 不一致为 403。不存在的 invocation、错任务结算未在这次运行中断言 | not_run | — |
+| G1-04 | 双端 schema 与题目集合 | M0 最小 fixture | Worker 读取 HTTP 状态；校验失败不写成正式成绩 | 校验任务按 provider 的 `accepted` 完成。500、坏 JSON、语义负例和 300 项未跑 | not_run | 授权试卷 PoC 仍缺资料 |
+| G1-05 | 调度/relay/reconciler 自动推进 | M0 cap 与轮转 | `supervisor.ts` 周期调用维护 | 上述超时停放没有手调 `/internal/reconcile`。默认 cap 下 3 项积压、轮转和 Redis 丢失未单独断言 | not_run | — |
+| G1-06 | 上传会话与按年龄清扫 | M0 | 临时路径、committing 会话、`object_is_live` | 这次运行没有并发清扫断言 | not_run | — |
+| G1-07 | 已实现实体的复合外键 | M0 | `0003_g1_controls.sql` | ingress 插入不存在 job 的 attempt，提交时 23503。R5-02 绑定负例未跑 | not_run | 完整题库仍属后续 |
+| G1-08 | Worker 不能签发全部服务权限 | M0 | 分开发行人密钥、exp、jti | 重用 jti 为 401；Worker 密钥签发 billing scope 为 403 | not_run | — |
+| G1-09 | Outbox 与 consumer 同事务 | M0 最小效果 | relay 写入 `asset_notices` 与 inbox 后才 delivered | 这次运行没有断言 notice 行，也没有杀 relay | not_run | 不实现 M1–M3 全图 |
+| G1-10 | 隔离运行与原始日志 | M0 | 迁移锁内重查；CI 改为 `npm ci` | 隔离库 `zhixue_m0_g1v2`、Redis DB 2。Docker 不可用，CI 未执行，有数据的 dump/restore 未跑 | not_run | — |
+
+## 2026-10-14 v3 关闭矩阵
+
+`developer_tested` 只表示 `var/runs/1791954241082` 这次本地隔离运行。`independent_verified` 仍是 `not_run`。没有把 F01–F28 标成 Closed，也没有宣布 G1 通过。
+
+| ID | implementation | developer_tested | independent_verified | future_stage |
+|---|---|---|---|---|
+| G1-V2-01 | Worker 仅在本次签发许可后 HTTP；已有 send_unknown/observed 不再请求 | 超时停放已观察到。重入计数和 SIGKILL 未跑 | not_run | 不自动再付费 |
+| G1-V2-02 | 接管后投递 execute_current；阶段失败协议；期限函数；维护步骤隔离 | 代码已进工作区。Worker 接手新 attempt、500/坏 JSON、无 Worker deadline 未跑 | not_run | — |
+| G1-V2-03 | criterion 去重；两位小数整数单位；page_count 与 ocr_char_count | 重复计分拒绝；0.10+0.20=0.30 通过且正式分为 0 | not_run | 授权试卷 PoC 仍缺 |
+| G1-V2-04 | 成功后释放临时键；过期 committing 可回收 | 未做并发清扫 | not_run | — |
+| G1-V2-05 | Worker 启动环境白名单 | 进程环境没有 billing/migrator/bootstrap 密钥 | not_run | — |
+| G1-V2-06 | 0004 把定义者函数改属 zhixue_owner | proowner 与 rolbypassrls 已查询。relay kill 未跑 | not_run | 不实现 M1–M3 全图 |
+| G1-V2-07 | run-isolated 分剖面；CI 不再调用旧套件 | 本地剖面 exit 0，独立 run 目录。Compose/CI 未跑 | not_run | — |
+| G1-01 | 保持 v2 授权 | 无范围 403；终态 409。撤权和 manual 并发未跑 | not_run | — |
+| G1-02 | 保持许可，并挡住重入 | 超时停放。杀死窗口未跑 | not_run | — |
+| G1-03 | 保持归属检查 | 令牌 attempt 不一致 403。业务接纳负例未全部打到 | not_run | — |
+| G1-04 | 语义与阶段失败已补 | 小数和重复计分已测。500/坏 JSON/300 项未跑 | not_run | PoC 资料仍缺 |
+| G1-05 | supervisor 与接管投递 | 自动停放。第三项、轮转、Redis 中断未跑 | not_run | — |
+| G1-06 | 临时文件收尾已补 | 并发清扫未跑 | not_run | — |
+| G1-07 | 0003 外键保留 | missing job 23503。其余 FK 与 R5-02 未跑 | not_run | — |
+| G1-08 | 分密钥与 jti 保留 | jti 401；环境白名单。新 jti 幂等重试未跑 | not_run | — |
+| G1-09 | notice 事务保留 | 函数属主已查。relay kill 未跑 | not_run | — |
+| G1-10 | 独立 run 目录 | 本地 exit 0。备份恢复和 CI 未跑 | not_run | — |
+
+## 2026-10-14 v4 关闭矩阵
+
+`developer_tested` 只表示 `var/runs/1791973007411` 这次本地隔离运行，退出码 0。`independent_verified` 仍是 `not_run`。F01–F28 不标 Closed。不宣布 G1 或 M1 通过。
+
+| ID | implementation | developer_tested | independent_verified | future_stage |
+|---|---|---|---|---|
+| G1-V3-01 | Worker 成功路径用已解析响应构造信封 | 生产者到 Python Worker 到 mock 到 Nest 的 model_grade 成功：1 条 proposal、预算减 1、正式分 0 | not_run | 授权试卷 PoC 仍缺 |
+| G1-V3-02 | 0005 扩展 result_status；阶段失败带围栏和收据 | provider_http、bad_json、schema_rejected、missing_persisted_result、deadline 已落状态。同体回放，异体 409，旧租约 409。升级恢复后的旧行改为 provider_http | not_run | — |
+| G1-V3-03 | 接管返回 billable；attempt 与 delivery_intent 同事务；Worker 用 claim/continue 的阶段 | model_grade 与 validate 的 SIGKILL 接管由新 Worker 跑完。许可/HTTP/观察窗口没有第二次付费调用。提交后崩溃再从 Redis 前缀重建 | not_run | 两个接管者同时调用没有单独断言 |
+| G1-V3-04 | finalize 的 CAS 与 claim_object_reclaim 共用行锁 | 专用库 1 秒租约加暂停 trigger：文件仍在且下载哈希一致。临时孤儿由两次清扫删除 | not_run | — |
+| G1-V3-05 | 下载返回 StreamableFile | PDF/PNG/JPEG 的 HTTP sha256 等于元数据。跨校 404、跨班 403、撤权 403 | not_run | — |
+| G1-V3-06 | Python FormatChecker 与 Ajv 使用同一 Schema | 合法信封两端通过；非法 UUID 两端拒绝。新响应和 observed 形状都验过 | not_run | — |
+| G1-V3-07 | 评分、对象回收、通知三个公开端口由组合根装配，并在同一 UoW 内调用 | 正常链、relay 提交前崩溃回滚、默认 cap 2、300 项里 5 个失败只重跑这 5 个。Compose/CI 未跑 | not_run | 不实现 M1–M3 全图 |
+
+## 2026-10-14 v5 关闭矩阵
+
+`developer_tested` 只表示 `var/runs/1791977980126`。`independent_verified` 仍是 `not_run`。F01–F28 不标 Closed。不宣布 G1 Go。
+
+| ID | implementation | developer_tested | independent_verified | future_stage |
+|---|---|---|---|---|
+| G1-V4-01 | 0007 对 delivery_intents 执行 ENABLE 和 FORCE。跨租户扫描仍走 list_open_deliveries | ingress / reconciler 在 B 和无上下文下读不到 A 的 lease_token，也不能写 A。两个 RLS 标志为 true。owner / router 无 BYPASSRLS。claim、接管、observed、Redis 恢复仍通过 | not_run | — |
+| G1-V4-02 | 同租户 job / attempt / epoch 外键，epoch 与 generation 必须为正。不一致旧行使 0007 失败且不删除 | 不存在父行、另一个作业、epoch/generation 0、跨租户父引用被拒绝。正常 claim 与接管通过。不一致样本升级失败后原行仍在 | not_run | — |
+| G1-V4-03 | restore-isolated.mjs 用不带 --no-owner 的 bootstrap 恢复，再执行原迁移文件。非 pgcrypto COMMENT 错误失败 | 0004 有数据原样升到 0007；另一次 dump/restore 后原样执行 0005–0007。属主不是 migrator，定义者函数 rolbypassrls=false。缺失 dump 使恢复失败。恢复库 Worker 窄链成功且正式分为 0 | not_run | — |
+| G1-V4-04 | 保留 Compose / CI 配置，并写出 PoC 授权清单 | 本机 PG 17.11 / Python 3.14.4 套件通过。docker info 失败，Compose 与 CI 未执行。授权试卷和标准答案仍未提供 | not_run | 负责人提供样本与端点；环境执行者提供 Docker / CI |

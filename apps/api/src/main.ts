@@ -25,7 +25,12 @@ class QuietFilter implements ExceptionFilter {
         : code === '42501'
           ? 'permission_denied'
           : 'internal_error';
-    log('request_failed', { status, message, pgCode: code ?? null });
+    log('request_failed', {
+      status,
+      message,
+      pgCode: code ?? null,
+      detail: exception instanceof Error ? exception.message.slice(0, 180) : null,
+    });
     response.status(status).json({ error: message });
   }
 }

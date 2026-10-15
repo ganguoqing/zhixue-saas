@@ -4,11 +4,11 @@ services:
     environment:
       POSTGRES_USER: zhixue_bootstrap
       POSTGRES_PASSWORD: zhixue_bootstrap_dev_only
-      POSTGRES_DB: zhixue_m0
+      POSTGRES_DB: zhixue_m0_g1compose
     ports:
       - "54329:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U zhixue_bootstrap -d zhixue_m0"]
+      test: ["CMD-SHELL", "pg_isready -U zhixue_bootstrap -d zhixue_m0_g1compose"]
       interval: 2s
       timeout: 5s
       retries: 30

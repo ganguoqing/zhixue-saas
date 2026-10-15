@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { loadDevEnv } from './lib.mjs';
 
 loadDevEnv();
+process.env.PGDATABASE = 'zhixue_m0_g1compose';
 
 function run(command, args) {
   return new Promise((resolve, reject) => {

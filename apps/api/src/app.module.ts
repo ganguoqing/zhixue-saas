@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { loadConfig, type AppConfig } from './config';
 import { APP_CONFIG, M0Controller } from './http';
+import { composePorts } from './modules/composition';
 import { M0Store } from './store';
 
 const config: AppConfig = loadConfig();
-const store = new M0Store(config);
+const store = new M0Store(config, composePorts());
 
 @Module({
   controllers: [M0Controller],

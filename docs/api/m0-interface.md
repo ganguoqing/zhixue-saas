@@ -35,13 +35,19 @@ node scripts/run-m0.mjs
 服务令牌的 audience 是 `zhixue-internal`，并且必须带对应 scope。租户以持久 job 为准，请求体里的 tenant 不能改写它。
 
 - `ai.job.claim`：`POST /internal/jobs/claim`
-- `ai.result.accept`：`POST /internal/jobs/accept`
 - `ai.job.prepare_invocation`：`POST /internal/jobs/prepare-invocation`
-- `ai.invocation.observe`：`POST /internal/jobs/mark-send-unknown`
+- `ai.invocation.issue_permit`：`POST /internal/jobs/issue-send-permit`。提交 `send_unknown` 之后 Worker 才能调用推理。
+- `ai.invocation.observe`：`POST /internal/jobs/record-observation`
+- `ai.result.accept`：`POST /internal/jobs/accept`
+- `ai.job.read_frozen`：`GET /internal/jobs/:id/frozen`
 - `ai.billing.settle`：结算和放弃未知费用
 - `reconciler.repair`：停放、关闭未证明阶段、接管、补投、清孤儿
-- `relay.dispatch`：`POST /internal/relay`
+- `relay.deliver`：`POST /internal/relay`
 - `scheduler.admit`：占用查询
+
+服务令牌必须带 `iss`、`sub`、`aud`、`exp`、`jti`。Worker、reconciler、scheduler、relay、billing 使用不同密钥。Worker 密钥不能签发 billing 或 reconciler scope。`jti` 不能重用。调度进程是 `node apps/api/dist/supervisor.js`。
+
+2026-10-14 的隔离运行记录见 `docs/quality-reports/m0-g1-evidence-v2.md`。那次记录不是 G1 通过。
 
 没有 `ResumeAfterSettlement`。费用 `unknown` 不会被自动再付费。放弃未知费用只把 `cost_status` 从 `unknown` 改成 `abandoned_unknown`，金额保持 NULL。
 

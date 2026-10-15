@@ -22,5 +22,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m venv .venv && .venv/bin/pip install -r apps/worker/requirements.txt
-      - run: npm install
-      - run: node scripts/run-m0.mjs
+      - run: npm ci
+      - run: ZHIXUE_PROFILE=compose node scripts/run-isolated.mjs

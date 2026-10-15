@@ -48,6 +48,15 @@ export interface AppConfig {
   apiPort: number;
   redisHost: string;
   redisPort: number;
+  redisDb: number;
+  queuePrefix: string;
+  sweepMinAgeSeconds: number;
+  uploadLeaseSeconds: number;
+  workerSecret: string;
+  reconcilerSecret: string;
+  schedulerSecret: string;
+  relaySecret: string;
+  billingSecret: string;
   serviceSecret: string;
   userSecret: string;
   databaseUrl(user: string, passwordEnv: string): string;
@@ -97,6 +106,15 @@ export function loadConfig(): AppConfig {
     apiPort: requiredInt('API_PORT', 1),
     redisHost: required('REDIS_HOST'),
     redisPort: requiredInt('REDIS_PORT', 1),
+    redisDb: requiredInt('REDIS_DB', 0),
+    queuePrefix: required('QUEUE_PREFIX'),
+    sweepMinAgeSeconds: requiredInt('SWEEP_MIN_AGE_SECONDS', 0),
+    uploadLeaseSeconds: requiredInt('UPLOAD_LEASE_SECONDS', 1),
+    workerSecret: required('WORKER_JWT_SECRET'),
+    reconcilerSecret: required('RECONCILER_JWT_SECRET'),
+    schedulerSecret: required('SCHEDULER_JWT_SECRET'),
+    relaySecret: required('RELAY_JWT_SECRET'),
+    billingSecret: required('BILLING_JWT_SECRET'),
     serviceSecret: required('SERVICE_JWT_SECRET'),
     userSecret: required('USER_JWT_SECRET'),
     databaseUrl(user: string, passwordEnv: string): string {

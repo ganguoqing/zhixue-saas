@@ -1,0 +1,1521 @@
+{
+  "reviewId": "ZX-AR-20261014-04",
+  "date": "2026-10-14",
+  "gate": "G1",
+  "conclusion": "No-Go",
+  "severityCounts": {
+    "Blocker": 0,
+    "Critical": 1,
+    "Major": 3,
+    "Minor": 0
+  },
+  "head": "e302221c5f7b8e81274dab1d5f02b2145dc0d3b9",
+  "headAloneIsNotCompleteInput": true,
+  "scope": "Already authorized M0 narrow slice; no original design or repo edits",
+  "submittedHashChecks": [
+    {
+      "path": "apps/worker/worker.py",
+      "expected": "01c1f8e13ca6d5b35c90add54afac6ffa1c322c62ec54d0ae4aa5c827bc657af",
+      "actual": "01c1f8e13ca6d5b35c90add54afac6ffa1c322c62ec54d0ae4aa5c827bc657af",
+      "match": true
+    },
+    {
+      "path": "apps/api/src/store.ts",
+      "expected": "367bf034efa40cab215a6ddecb36429dbe1814426d5f09c04f9e9bff78f691ca",
+      "actual": "367bf034efa40cab215a6ddecb36429dbe1814426d5f09c04f9e9bff78f691ca",
+      "match": true
+    },
+    {
+      "path": "apps/api/src/http.ts",
+      "expected": "e049c2e064625bcefb5b7352afe414e8bb91d24c6695639fc562c010803fbbf7",
+      "actual": "e049c2e064625bcefb5b7352afe414e8bb91d24c6695639fc562c010803fbbf7",
+      "match": true
+    },
+    {
+      "path": "db/migrations/0005_g1_v3_status.sql",
+      "expected": "f53e84f8d1797166a0fb94049d5804d8716dc796a29de97dfeabd711b7f3f7ee",
+      "actual": "f53e84f8d1797166a0fb94049d5804d8716dc796a29de97dfeabd711b7f3f7ee",
+      "match": true
+    },
+    {
+      "path": "db/migrations/0006_g1_v3_delivery.sql",
+      "expected": "29c0f87ec2afa245fed3833197a5943732007d598147a3651220b727001c977b",
+      "actual": "29c0f87ec2afa245fed3833197a5943732007d598147a3651220b727001c977b",
+      "match": true
+    },
+    {
+      "path": "tests/m0/g1-v4-flows.mjs",
+      "expected": "177564e974297f28c2c1af0ea673c1b3ae29af0b1078c89c16ed6392d1ae00eb",
+      "actual": "177564e974297f28c2c1af0ea673c1b3ae29af0b1078c89c16ed6392d1ae00eb",
+      "match": true
+    }
+  ],
+  "sourceManifest": [
+    {
+      "path": "apps/api/package.json",
+      "sha256": "b206fd0af4130cd971487d5a42ee6d8048eed49650ca16aab7ee014925de6fc7"
+    },
+    {
+      "path": "apps/api/src/app.module.ts",
+      "sha256": "44e59c5c36cd0743a61da85892fd0a322ad940809df0bd51cccf8da5ba2beba4"
+    },
+    {
+      "path": "apps/api/src/config-check.ts",
+      "sha256": "0afd327eb3574c762a1f6078fe2217b15ac980c81cf1f466ed9c265cd692b7d9"
+    },
+    {
+      "path": "apps/api/src/config.ts",
+      "sha256": "3beff7f4483bae60669a842a18a9901e0db5b50d5ca3fee5d1a5948686cbc120"
+    },
+    {
+      "path": "apps/api/src/http.ts",
+      "sha256": "e049c2e064625bcefb5b7352afe414e8bb91d24c6695639fc562c010803fbbf7"
+    },
+    {
+      "path": "apps/api/src/logger.ts",
+      "sha256": "ffbca71fc27841946adf30f24abf264891cddea3a6ad576e1bd66bf6f31dc152"
+    },
+    {
+      "path": "apps/api/src/main.ts",
+      "sha256": "bef7331a27a12828f10952fcf62c95f09d8fac6f4b77f67508cabbeb8919997b"
+    },
+    {
+      "path": "apps/api/src/modules/composition.ts",
+      "sha256": "7fb503ea8d1e914400bbd733157cceba295ae7fbe4fe811f4ca77f2661a53a0c"
+    },
+    {
+      "path": "apps/api/src/modules/grading-port.ts",
+      "sha256": "9f2a984d143321a6bf8f7735748bc4cef21424991aee8cef68a48ebf290fac63"
+    },
+    {
+      "path": "apps/api/src/modules/relay-port.ts",
+      "sha256": "3c080075bd7906e4a855826ada83c9667afef151a103ea51a7e06e185f9314b0"
+    },
+    {
+      "path": "apps/api/src/modules/storage-port.ts",
+      "sha256": "eec1d71dc7e4eeb63a3924e2bc86874d083cce1874c12c47604dcaa3679ef822"
+    },
+    {
+      "path": "apps/api/src/schemas.ts",
+      "sha256": "03508d7c471299aa96c976d27e55c8f456bf8c53378de273553cd6900ad49d10"
+    },
+    {
+      "path": "apps/api/src/service-auth.ts",
+      "sha256": "458d24edfa009c91896aa107ee6b2c77dd477e10d39bbbb3cdcfaacee5b2bbfc"
+    },
+    {
+      "path": "apps/api/src/store.ts",
+      "sha256": "367bf034efa40cab215a6ddecb36429dbe1814426d5f09c04f9e9bff78f691ca"
+    },
+    {
+      "path": "apps/api/src/supervisor.ts",
+      "sha256": "2d38b719530390035c70443a1f96907122f5b782e619e99628fed66912b95f98"
+    },
+    {
+      "path": "apps/api/tsconfig.json",
+      "sha256": "f7a866aef628d0109eeada0e0f78ebcccd6fe7825da54f585192deade146fb63"
+    },
+    {
+      "path": "apps/inference/main.py",
+      "sha256": "f7956c0c33d34d295514086dbdf5fa5300980b91061595db95c562578fda323b"
+    },
+    {
+      "path": "apps/worker/requirements.txt",
+      "sha256": "18c67711d5626f4f19727dd6e4fb51cb2a6b3482013c67c91cc0c543ca36880d"
+    },
+    {
+      "path": "apps/worker/worker.py",
+      "sha256": "01c1f8e13ca6d5b35c90add54afac6ffa1c322c62ec54d0ae4aa5c827bc657af"
+    },
+    {
+      "path": "db/migrations/0001_m0.sql",
+      "sha256": "56886c5fb5796c0fae54cba2ab26cd077b2f9a3cddd8ef794f499fa1281320ba"
+    },
+    {
+      "path": "db/migrations/0002_correlation_note.sql",
+      "sha256": "0f088e3ea8ed8ad37c47a965b89803da644b39aeffc0f355a8e1e11745d8a0e0"
+    },
+    {
+      "path": "db/migrations/0003_g1_controls.sql",
+      "sha256": "ca0b7a3df12948727948cac3a740d638ccf35c6fd1ef45968c27eb7f800ed2cd"
+    },
+    {
+      "path": "db/migrations/0004_g1_v2_controls.sql",
+      "sha256": "1dcdbcd966a8ef6ce209bc00445f1d7d033a3de355f39f971f22bca9269ab946"
+    },
+    {
+      "path": "db/migrations/0005_g1_v3_status.sql",
+      "sha256": "f53e84f8d1797166a0fb94049d5804d8716dc796a29de97dfeabd711b7f3f7ee"
+    },
+    {
+      "path": "db/migrations/0006_g1_v3_delivery.sql",
+      "sha256": "29c0f87ec2afa245fed3833197a5943732007d598147a3651220b727001c977b"
+    },
+    {
+      "path": "scripts/lib.mjs",
+      "sha256": "d9de45d9429b460838142d8d29443d6ea52080e53b7548f93897ab6415941e45"
+    },
+    {
+      "path": "scripts/migrate.mjs",
+      "sha256": "9201fb54ff6f2cdae0b5e05237739e9dd29d0bc2cd076774b10c83038726626c"
+    },
+    {
+      "path": "scripts/run-g1.mjs",
+      "sha256": "48525592ad87014ebdfb02feaeba951e85a79dcb06caa79b2ba9d5dbc0dd19b0"
+    },
+    {
+      "path": "scripts/run-isolated.mjs",
+      "sha256": "aff549bd0ea18d26b0e7fbfcc89eb76d44e71e04321fe70a10b40628ec146677"
+    },
+    {
+      "path": "scripts/run-m0.mjs",
+      "sha256": "630b45e97c8bb3bffa085f0629330c33aa703bb1ad50c970d69b3d64ee731573"
+    },
+    {
+      "path": "scripts/seed.mjs",
+      "sha256": "19dde8db4eef56ea96c0b67667a76f90c0906111635fc1731bf9b4fd07ef87f2"
+    },
+    {
+      "path": "tests/m0/g1-v4-flows.mjs",
+      "sha256": "177564e974297f28c2c1af0ea673c1b3ae29af0b1078c89c16ed6392d1ae00eb"
+    },
+    {
+      "path": "tests/m0/g1.integration.test.mjs",
+      "sha256": "223354d62d0a211ba8492cc3e1906335ecc9e6af7988ff2a19bbf8b6031d9eaf"
+    },
+    {
+      "path": "tests/m0/integration.test.mjs",
+      "sha256": "1e61cd621b60fc8e8115ea97e51a88960ba3eaab332a86cf2a911627faabe21e"
+    },
+    {
+      "path": "config/dev.env.example",
+      "sha256": "037e73e3122c562af28383d4041e6fa7d619f324ae91ef8dab3a5a0034b17948"
+    },
+    {
+      "path": "config/production.env.example",
+      "sha256": "77905824836937bc154f723355c419460b1b68031fe2c7d275465a89c400a210"
+    },
+    {
+      "path": "config/staging.env.example",
+      "sha256": "8f8263804bc9d2107d65e133ae937691c63a90a1dc6174b8d63b418c04086ada"
+    },
+    {
+      "path": "docs/api/m0-interface.md",
+      "sha256": "5d1decf603f9d92af8c2b43e4ad81acff17fb1132d64b011c67b32e0a13f9b11"
+    },
+    {
+      "path": "docs/architecture/architecture-v1.0-original.md",
+      "sha256": "904ff3d9bb505b9df5f30347ef8d3191728c3859cebd18fde57c56f9af86872b"
+    },
+    {
+      "path": "docs/architecture/authorization-matrix-v2.md",
+      "sha256": "05f4295e1029ac51f0c22e4ed873e9856f41b901e5847e8175b7178a59573f87"
+    },
+    {
+      "path": "docs/architecture/current-contract-index-v3.md",
+      "sha256": "0d7592d3c98ffa880983a57e1cb0e8578b3de23ab3108cfc72177233c1220633"
+    },
+    {
+      "path": "docs/architecture/data-dictionary.md",
+      "sha256": "d5364a93147ac9c74c5d25ec207357a3a4c3fbc3ab0fd65636b3436c164a8819"
+    },
+    {
+      "path": "docs/architecture/module-adjacency-v2.md",
+      "sha256": "f5a04ac1085fb98a6b1e8e27f00441f7441217eda302f4a6c1c091ae53aeeee3"
+    },
+    {
+      "path": "docs/architecture/review-remediation-v1.md",
+      "sha256": "cb59f62fe5f57c1a0e3acd86989f852ad37598405c59f1a5530b088b1d2a4e92"
+    },
+    {
+      "path": "docs/architecture/review-remediation-v2.md",
+      "sha256": "dcf8226c1590e68d7582e4d06695c9185cd529fdeb914f4729235de466adc552"
+    },
+    {
+      "path": "docs/architecture/review-remediation-v3.md",
+      "sha256": "7e90298d68139a64f44f71e69c4f3ffd6b55feb224edd8bc811a02d9278c0008"
+    },
+    {
+      "path": "docs/architecture/review-remediation-v4.md",
+      "sha256": "0d62ef82dd4a536c6a4b66e328324d6cc82ecf7c54b3f5d731478278c3c86db7"
+    },
+    {
+      "path": "docs/architecture/review-remediation-v5.md",
+      "sha256": "b2f46a3d5a8eebe1c1aedd03c77ec58e26ffd93f0559c4c78257a09947cb56ea"
+    },
+    {
+      "path": "docs/architecture/schemas/acceptance-envelope-1.0.0.schema.json",
+      "sha256": "fed2ed429e368a9062a590e69999146d981494930db0d1194ff9e7272bfb3c3f"
+    },
+    {
+      "path": "docs/architecture/schemas/grading-contract-v2.md",
+      "sha256": "81a9cee8cb50301a6ced2e6281d3ce00fbe82e20f3daddbf17ece81557a22152"
+    },
+    {
+      "path": "docs/architecture/schemas/grading-result-1.0.0.schema.json",
+      "sha256": "e6af630972c043f3d19d00fd804608c56b0846de0cf1d32681120c1d491d94ab"
+    },
+    {
+      "path": "docs/architecture/schemas/model-grade-payload-1.0.0.schema.json",
+      "sha256": "a2221fba2313d863bc1b6b333250f33c53fa030f012789a44cadecea4f9b7424"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/ADR-002-module-ownership-uow.md",
+      "sha256": "10af28deabc0922a70493844a1a6a49636a577e2097d206fbfb6849832a20a9b"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/ADR-004-bullmq-python-worker.md",
+      "sha256": "dc7fc5e5f809bf097189f0f8229dca8e278a5d6e7bdf48a34bb298ea89d1574f"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/ADR-005-outbox-inbox-object-finalize.md",
+      "sha256": "df3b8f01b4f14769ac37766fb5cd1cadd8dddd88b0a715589b7564e910c08b24"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/ADR-006-freeze-and-score-versions.md",
+      "sha256": "76bcaa618479dc5a1871e6de5602266ca706b425a63f9e27d07889c0fdb7a13e"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/ADR-007-review-publish-absence.md",
+      "sha256": "68e3c06ed8bc5fd097c3dfb61bb2a24dc55467bff7dc14064593c37006142d58"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "87a4ae8cac35047a034a10eecbb8d4f3a690845acbaec8cb38f3d8fa1cab7be1"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/MANIFEST.md",
+      "sha256": "27705e369d9016909cff56542b02d7444778a700d634b48bb4eae832484f7175"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/architecture-findings-tracker.md",
+      "sha256": "2f80744c8aab9760587b15c79932fd06758711e3f0a68e8174222d7a8b89f12e"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/authorization-matrix-v2.md",
+      "sha256": "99ace9b19a30d426be3de8a7b7e55f085e3ce47e4b8b430ad143352bef4a1e88"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/core-constraints-v2.sql",
+      "sha256": "d5c26d711fc98ab66b238566b8dc70cdbde34beb8905f3e7700c4edee6d860ea"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/data-dictionary.md",
+      "sha256": "e34ddf5dfd56307bab6a4c70094e85c2d269e43f5a4b70774be759f754441323"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/g0-design-response-v2.md",
+      "sha256": "65652a17ddd0c5ec2650c12cf917026fcaba7019a8be7a18d9d87d683816a619"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/grading-contract-v2.md",
+      "sha256": "26bbef63eb57a873325806320d6459bef6715ca24934091ca9419d12bf25f30f"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/module-adjacency-v2.md",
+      "sha256": "50350ac12902908fd2ecf8eea9601c1a46427dfb533aad0974717dcf8d569c69"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/review-remediation-v2.md",
+      "sha256": "8d323564979c479a09e0b84fd8f6b39a817006f563c4d79c63d1611dbe747306"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/state-transitions.md",
+      "sha256": "f97e2dc0ccf3313732cf92338a75c8afd0e3b0039972232c2b9d538989ef3496"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-02/transaction-boundaries.md",
+      "sha256": "efabe42b34fbf8ccff128ba0a72bbb20a629fa0b9e9af677b1db177cfc5bf587"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/ADR-001-tenant-composite-fk-rls.md",
+      "sha256": "a6a7872751440ace7c6d658dc32f25396d68c486a748a919e2d1176a36ad0ab8"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/ADR-004-bullmq-python-worker.md",
+      "sha256": "583a4f98dfeb9574e2229f741ef2a3ddb880d088aaee241516f568fe6f21dede"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/ADR-007-review-publish-absence.md",
+      "sha256": "ee5e9de9b0bf5eda50dba410da1db96d919fc4a302bbfe7b03814d9388bca8ca"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "87a4ae8cac35047a034a10eecbb8d4f3a690845acbaec8cb38f3d8fa1cab7be1"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/MANIFEST.md",
+      "sha256": "fe6a7785e627dcf0274eab9f4adff968d6c181f88a5751ed1326796c2d45fcd3"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/architecture-findings-tracker.md",
+      "sha256": "776aed706afcc9356b96ad236bb1a5fb2cdc3830abf0881de07cb4c8a26a07aa"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/authorization-matrix-v2.md",
+      "sha256": "c2d31b759f20d62eadce00d878128dd8081447927ddda92b53996ddbad6ace38"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/core-chain-v3.sql",
+      "sha256": "4487da27e2b4430652bc7b5ac549acd914a2ba1d3631be2e4139951b176e10cf"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/current-contract-index-v3.md",
+      "sha256": "4e378cdaf971e0c91d6848fcda26f5bdb9bdfaa19c842051b739cd091cadcbc2"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/data-dictionary.md",
+      "sha256": "543a2e47b4b0d53b69a51e26b0695ed017474bd1a6309883db0b615fb1e60c7e"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/g0-design-response-v3.md",
+      "sha256": "5b59870f71cfb735e65685d443284686d0974a85e2fc865cee2aa0318c8acc62"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/grading-contract-v2.md",
+      "sha256": "0065a2761942508a75e3e520ae8f610aa0823ef4ac55eeb98c963fc63a673226"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/module-adjacency-v2.md",
+      "sha256": "e5738475f3fd49957e7f66438ea2f019976fb9f649f7b3326c1ef22668aad529"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/review-remediation-v3.md",
+      "sha256": "f29774cd401815778798ece68c4e97994710693a0e4737a664b76e4144341305"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/state-transitions.md",
+      "sha256": "c5a29c6455af128edd7f499baef332bb6f18b9e80605cc6fe55e13e11c868dc6"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-03/transaction-boundaries.md",
+      "sha256": "4f31647398fb4f0ac9275d417380400d4d82298935632d65ac83700ebb847e48"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/ADR-004-bullmq-python-worker.md",
+      "sha256": "e20d87b5238e9bca35406627c54e398da20bbf59bae0051967e8ab39ed7850ce"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "0b783094d33d3df1db1ae3204e507d934e57aed2950343ae0de3b89644c76fca"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/ADR-013-ai-schema-lineage-calibration.md",
+      "sha256": "23a3ae1b64a9a0522ad46e806fb03be473d328582f397ccfd15d5217ecdfade5"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/MANIFEST.md",
+      "sha256": "d895d84464629df0f545508cdeb88f9e9602869c76bc423f5e15ba9915d8fc40"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/architecture-findings-tracker.md",
+      "sha256": "84a5aa14928789e6b656782ff3b85251a875052c53846e3ff289d17d0e61d8cc"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/authorization-matrix-v2.md",
+      "sha256": "658aa3c61e07d6e85b2801e0020a95888b8e56aada69b0405caa24b043d714a1"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/core-chain-v3.sql",
+      "sha256": "f510808587008f79cf18507effbd9afe16d9d705b00aa612ad1b13abdc2fa483"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/current-contract-index-v3.md",
+      "sha256": "77f2b62411f852fa03f91115978e0b08bc440ce1babf1e64231b619767041287"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/data-dictionary.md",
+      "sha256": "136093f4525cfbc44cf35d939ccb5d4f5fccd0a3049a52422da930141145c54d"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/review-remediation-v4.md",
+      "sha256": "e58cf450bcf4f31af50798c698994c5ed339343276aa2aaa81c5f34e3a2eb5cd"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/state-transitions.md",
+      "sha256": "ce0de7553168922394d1978d1eb6c9be5625e851212bd684f2f719a00e537221"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261012-04/transaction-boundaries.md",
+      "sha256": "4fc8304801240a7c3a88526840b02c97c9dea579484705776817a095694728c8"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261013-01/MANIFEST.md",
+      "sha256": "9a50356ebc8b0424016d3f915ade182dc71b28e08e19ab6ab3cd33f6d338f9ec"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261013-01/architecture-findings-tracker.md",
+      "sha256": "45af997470571f2d857bcc623677c43b84a50f24bef2a82bead8b31cc3b44e98"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261013-01/current-contract-index-v3.md",
+      "sha256": "2dd7473abd4d47dd7725761f3220bf028df11ab4e0020d0f34d297ce33f70ae4"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261013-01/review-remediation-v5.md",
+      "sha256": "2d75f15b88df4c96ed431d9361ffe2826a74c3a2b5024341979be5ebb6411a9f"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261013-01/state-transitions.md",
+      "sha256": "1f929bce3397ccbcf290f21003c688a85257979c183e1a9edbee38740152675e"
+    },
+    {
+      "path": "docs/architecture/snapshots/zx-des-20261013-01/transaction-boundaries.md",
+      "sha256": "03fea55330ab09ec7f805ca0bb58ab90c4d5659246dd8b91ef944028b1dc746c"
+    },
+    {
+      "path": "docs/architecture/sql/core-chain-v3.sql",
+      "sha256": "a06d3737a3741b26d1e4cf7370d10b8403a2404d5c0388ba0d89ac890bd1dfb3"
+    },
+    {
+      "path": "docs/architecture/sql/core-constraints-v2.sql",
+      "sha256": "0c6bbf6b5000056b71fac32ceadf903dc94c34cb81af6e4eed9884de8c8691fd"
+    },
+    {
+      "path": "docs/architecture/state-transitions.md",
+      "sha256": "fb1ab674b7681b25567e1b5718c19e2863382857c3137b1c48b347140b6ca70c"
+    },
+    {
+      "path": "docs/architecture/transaction-boundaries.md",
+      "sha256": "cc039d1a88e6b44c10fccbf094bbe2a252704dd9cc6fa9dc9b9335d4493b1865"
+    },
+    {
+      "path": "docs/decisions/ADR-001-tenant-composite-fk-rls.md",
+      "sha256": "d5add9ae4e40b292e7af1164dea06f103d7284053ad7f71586b74c23b6a6ee55"
+    },
+    {
+      "path": "docs/decisions/ADR-002-module-ownership-uow.md",
+      "sha256": "7ba29876c6d8b54e5378614f57fadae5ad0f03b0d7a16df6735407d9fd4ccf3d"
+    },
+    {
+      "path": "docs/decisions/ADR-003-ai-result-acceptance.md",
+      "sha256": "f7173e5c9b03195c74fcb0491f69ccb22a088706728afe1ae095194c047f090c"
+    },
+    {
+      "path": "docs/decisions/ADR-004-bullmq-python-worker.md",
+      "sha256": "ee50eea903c58cf5089c53e92d5e899a412199e3e66588da6186961f91e76bad"
+    },
+    {
+      "path": "docs/decisions/ADR-005-outbox-inbox-object-finalize.md",
+      "sha256": "e776e29f345e82604d0072105e3636f4625030a429203f101770376e566b9c71"
+    },
+    {
+      "path": "docs/decisions/ADR-006-freeze-and-score-versions.md",
+      "sha256": "27f69ed358d7d0761190757f13b30af8e27406f3fb3191979bffab8864f55a6b"
+    },
+    {
+      "path": "docs/decisions/ADR-007-review-publish-absence.md",
+      "sha256": "2ec983048bd58accbadf3f063076424873f514cda40b872cc768ddc049571c33"
+    },
+    {
+      "path": "docs/decisions/ADR-008-postgres-knowledge-graph.md",
+      "sha256": "451e3cf62c2ca2ecc6ab133d0a5c608703df84b515e5ec0546f783458d63f608"
+    },
+    {
+      "path": "docs/decisions/ADR-009-object-storage-auth.md",
+      "sha256": "5f4f83a6ccf3d6d90917543373994a345c7db00a56febb11ca004d1aa5b517a1"
+    },
+    {
+      "path": "docs/decisions/ADR-010-env-backup-migration.md",
+      "sha256": "2b1915505ba8544e864142254fd7faef76a2668e368d6d3b1637f9d3441fcec8"
+    },
+    {
+      "path": "docs/decisions/ADR-011-temporal-roster-snapshot.md",
+      "sha256": "362f1563cf8c538260a3da96be067b118f7d89b8e83d48cb41ab1673e77049df"
+    },
+    {
+      "path": "docs/decisions/ADR-012-quota-tenant-lifecycle.md",
+      "sha256": "56309ff98e9457366dfc48ba069f3cf7e7f7daf433c8abd0502cc7cb79dceca9"
+    },
+    {
+      "path": "docs/decisions/ADR-013-ai-schema-lineage-calibration.md",
+      "sha256": "abe80eb80b173a7618bc191c5f9ed91fa7199a6d30b637ed33d091bcfbf08d37"
+    },
+    {
+      "path": "docs/decisions/ADR-014-data-duty-retention.md",
+      "sha256": "ddd58f24f7a1a3b8a406ec9d62edff3ede1198aaee71ce194d0c910955da1653"
+    },
+    {
+      "path": "docs/decisions/ADR-015-source-milestone-placement.md",
+      "sha256": "8975e806738a51441ffec588c5446b480b3fa02d860e79400833069e2a164128"
+    },
+    {
+      "path": "docs/decisions/g0-decision-record-20261013.md",
+      "sha256": "fbc5eaa3e760f60d517c2dc4f6892f1240996b70e23fa2330bd26b63cf640d6b"
+    },
+    {
+      "path": "docs/decisions/g0-decision-sheet-v5.md",
+      "sha256": "ace8163ad8d27de31d97863af32b0ea55a35f10e3bbefa9d364c1b7651203b9f"
+    },
+    {
+      "path": "docs/product/requirement-decisions-v0.1-v0.28.md",
+      "sha256": "cc5422fdac013f1f6cc9448ae0921d2a789071307d4842cf4a562249295c2388"
+    },
+    {
+      "path": "docs/product/requirements-v1.0-original.md",
+      "sha256": "e61362db53450a8d337037085fc83adb335ba7748fea4090a7d8254460f6dc63"
+    },
+    {
+      "path": "docs/product/智学_SaaS_产品需求规格说明书_V1.0.md",
+      "sha256": "22d34488a1097751139b1dcbf60c10bf3c2931c0101075ef01d8fd1a5b880463"
+    },
+    {
+      "path": "docs/prompts/cursor-g0-decision-recording-prompt-v5.md",
+      "sha256": "a2b92d4e8a3ea19f268430d08c814d448c519877f5f20b8c6e50b0a7856d08a0"
+    },
+    {
+      "path": "docs/prompts/cursor-g0-remediation-prompt-v2.md",
+      "sha256": "d226df4b7e0d630c8561464c0f8a8cf2af8ace49e0d552323fc6942b3bb2887c"
+    },
+    {
+      "path": "docs/prompts/cursor-m0-g1-remediation-prompt-v1.md",
+      "sha256": "e98bf0c2ee432ea5682c548496c787d90eb5f832de6810f57ee41ef7642be1e0"
+    },
+    {
+      "path": "docs/prompts/cursor-m0-g1-remediation-prompt-v2.md",
+      "sha256": "c229d2ea934c4e336e13f7205f2affe07453a3fda2ddfb6fef8738a4b13d34c7"
+    },
+    {
+      "path": "docs/prompts/cursor-m0-g1-remediation-prompt-v3.md",
+      "sha256": "63e8e2bc202a203506718f5ab9c8670ba62a6afaf2ce1ebe156215bd3217d070"
+    },
+    {
+      "path": "docs/prompts/cursor-repair-prompts.md",
+      "sha256": "7abd2066633ff0746c053ac44c5c1e2d92eb124a1277053326d40138bd27eb84"
+    },
+    {
+      "path": "docs/prompts/prompt-1-g0-design-remediation.md",
+      "sha256": "96df52680b802f350260a449e3e4ac8f1190bbbbe8dd0f192c9dba574ed72778"
+    },
+    {
+      "path": "docs/quality-reports/architecture-findings-tracker.md",
+      "sha256": "67df084604d19d763026edfa5dfa0b7ab91306dc100f7ad959b35c9c6e29b680"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-evidence-manifest-v2.json",
+      "sha256": "12c3b44749b0fb521742baffc4b2464c17af5d45d94678cda98b45896a44ca4e"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-evidence-manifest-v3.json",
+      "sha256": "84c83758d51d50f356370696ae76ceb0f9520f68f28b8b7488d0b227ada05fcf"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-evidence-manifest-v4.json",
+      "sha256": "18a77572718fe0d4634e150f571d6dd19af7fdfccf0bb6ef5b36d9775b9764c8"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-evidence-manifest-v5.json",
+      "sha256": "82c391ba4c915f2bd2a1a2a93c496ad55e0a3b5f285bf645fdc533dddfc8f9ae"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-evidence-manifest.json",
+      "sha256": "2f78356fb489e8c2c78954124be66dd9b3d1d41a6807a10cf09b254b377a1fa6"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-re-review-report-v1.md",
+      "sha256": "3c95cfa044f1bf441415183102a353c088d6a18b839379e7fe151cbd35577034"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-re-review-report-v2.md",
+      "sha256": "8ceda15e999c617d45ddc9ab495eb2a07d7b09845dd495c2978765012df46251"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-re-review-report-v3.md",
+      "sha256": "3513e25ed37df3d5c3a32aeb6d448337776f15592527ef51328a885d3536597f"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-re-review-report-v4.md",
+      "sha256": "a36a6f6c0bf865e8c27b04feac211a815c37402a3f942e450ee9dc0898f218ab"
+    },
+    {
+      "path": "docs/quality-reports/architecture-g0-re-review-report-v5.md",
+      "sha256": "73c7aebfeabeed09aa1c1187cc187da5217601856742d61dabe93f8194b4a45c"
+    },
+    {
+      "path": "docs/quality-reports/architecture-m0-g1-re-review-evidence-v2.json",
+      "sha256": "572eb428c265730818a4971609d87a41055eab28e0ae4e9a8c267f2d03478a79"
+    },
+    {
+      "path": "docs/quality-reports/architecture-m0-g1-re-review-evidence-v3.json",
+      "sha256": "5ea4ebd46fa66844b5ad9676a44e383cc2376984f23fc8cbf404067c5557e805"
+    },
+    {
+      "path": "docs/quality-reports/architecture-m0-g1-re-review-report-v2.md",
+      "sha256": "7e0d007d7fb50b7ad8ce926a054416ad6f2eb5ee53d16f1e1df18c36f1773e46"
+    },
+    {
+      "path": "docs/quality-reports/architecture-m0-g1-re-review-report-v3.md",
+      "sha256": "b6b2e1382d8324f94bbbd0af405836ef0ee506d26b81aa7c94a7a4c717d36370"
+    },
+    {
+      "path": "docs/quality-reports/architecture-m0-g1-review-evidence-v1.json",
+      "sha256": "52b90c83bf8e543e99bcb39247bbc4c884010bd27dce19ffdc580615526c7e04"
+    },
+    {
+      "path": "docs/quality-reports/architecture-m0-g1-review-report-v1.md",
+      "sha256": "b827dd479faea913380862da40996d7a21b1f0d924c2fe64b27a612a2a94fdea"
+    },
+    {
+      "path": "docs/quality-reports/architecture-review-report.md",
+      "sha256": "d9add906755d4875d70eb66100462b7f2ee2ee48f368650cc442609130904941"
+    },
+    {
+      "path": "docs/quality-reports/g0-design-response-v2.md",
+      "sha256": "65652a17ddd0c5ec2650c12cf917026fcaba7019a8be7a18d9d87d683816a619"
+    },
+    {
+      "path": "docs/quality-reports/g0-design-response-v3.md",
+      "sha256": "5b59870f71cfb735e65685d443284686d0974a85e2fc865cee2aa0318c8acc62"
+    },
+    {
+      "path": "docs/quality-reports/g0-design-response-v4.md",
+      "sha256": "f5a528218c4b12e305b69ff6e10a79e130327a87ea24c004e31b05a512b6c49e"
+    },
+    {
+      "path": "docs/quality-reports/g0-design-response-v5.md",
+      "sha256": "6715ee3342cb1d2b8df30b3abe75205beac6c9ffdfe265cd3f18447a4b3ab327"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-evidence-v2.md",
+      "sha256": "56bf1411fd71d3f176b77bba567ba8d4edf4963851bf6113ef659b578a194948"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-evidence-v3.md",
+      "sha256": "9b2d95d52b2c89aceb9f863f920eaa7449e20bd50b6a0b3196ef03c478c1d7bf"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-evidence-v4.md",
+      "sha256": "4a9ed8d69bed9051a3e9e7eeb5ecd3863696e1c65139e5bea04c838d0d3dd59d"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-evidence.md",
+      "sha256": "351f06a30e69808e438b405519d823caf2790cbbbe80b08904338a6d1948fac5"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-response-v2.md",
+      "sha256": "5a98d245953934e6850ba1320157a117814732ebaee92039a01d0cc3caf91744"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-response-v3.md",
+      "sha256": "cc25fcc6a032e92ed91dc435e14812e083dd1096702a087dee309ab077c7e5b1"
+    },
+    {
+      "path": "docs/quality-reports/m0-g1-response-v4.md",
+      "sha256": "9efd10a6cd00f02b9e8f4eb0fdb085642187798b86f9098464173e5987a7fd07"
+    },
+    {
+      "path": "docs/references/demo/assets-zhixue-light-logo.png",
+      "sha256": "aa10b86ab306297ec69fbdef65a585c7bcab89d2d225edd8afefc30cc93ca19d"
+    },
+    {
+      "path": "docs/references/demo/csv-data.js",
+      "sha256": "97f3f4dca48ec036acedce39d4e3a536c8ede5ec13751ed0f014bcb7bedd61f1"
+    },
+    {
+      "path": "docs/references/demo/index.html",
+      "sha256": "b7f287f53040533035bf124fe68f631a847bc3c42e4f7d4258aa829db87ec3a3"
+    },
+    {
+      "path": "docs/references/demo/初中数学学情数据看板_成绩_表格.csv",
+      "sha256": "339b0ff05fb68ff8a31758e7e60edc27d76bdd5cdc60e7f9a0390d869df6df4a"
+    },
+    {
+      "path": "docs/references/demo/初中数学学情数据看板_掌握度_表格.csv",
+      "sha256": "7d19bb2fc4b04eb45d060e28755ffec25da5ced4ccd551f88684921f95619e72"
+    },
+    {
+      "path": "docs/references/demo/初中数学学情数据看板_班级_表格.csv",
+      "sha256": "7e14a1ed48b61e4aa3df066597a6a86c492091ba273017bc732590b677e162c2"
+    },
+    {
+      "path": "docs/references/demo/初中数学学情数据看板_知识点_表格.csv",
+      "sha256": "b7adcc65f36c46f026804eae2fce7c0e3b512dffffd678e674eaaf905fcbc0fc"
+    },
+    {
+      "path": "docs/references/demo/初中数学学情数据看板_考试_表格.csv",
+      "sha256": "3e62c23df5ee9824984fc79c279c586086fb1a3f2305936aa68d58ebd74740bb"
+    },
+    {
+      "path": "docs/references/demo/初中数学学情数据看板_错题_表格.csv",
+      "sha256": "e063a522f2abca566abf149c3b98663172eeb55c085a6f8afd196b7ca0eb3642"
+    },
+    {
+      "path": "docs/references/review-evidence.md",
+      "sha256": "b070f25a320ab68fdb7fa38acfaeff9a7f6f40a5b86e07db989940e25f477765"
+    },
+    {
+      "path": ".github/workflows/m0.yml",
+      "sha256": "659389282cad84eafbc5bd0643e7bfad4160758fba495a0a0c15d005af08e22f"
+    },
+    {
+      "path": "package.json",
+      "sha256": "66d323597ff3186574f296e096c50ac99490a0795f887b1b3f75fa9addcd5215"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "a3333347108f4114b0874d7cfafa3e57a393dbe7eee66a6c5cc2e7fe7a0c59ad"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "e15ee54482f81bf208e25c17482e940f07cf3df459f51415d8ce46c971351bb4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3adbde9b64e5da460917599f32b0779937aaf1abd64fbf5fe895926b6c8e1a8f"
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "9a5f150c51611b22cd7d4899530b0ad50e06f4e5b4a207f0fe461d9665a4407b"
+    }
+  ],
+  "sourceUnchangedAtCompletion": true,
+  "environment": {
+    "time": "2026-10-14T10:53:06.339Z",
+    "versions": {
+      "node": "v24.15.0",
+      "server_version": "17.11 (Homebrew)",
+      "redis": "7.4.2",
+      "nodeBullmq": "5.61.0",
+      "python": "3.14.4",
+      "bullmq": "2.16.1",
+      "httpx": "0.28.1",
+      "jsonschema": "4.23.0",
+      "referencing": "0.37.0",
+      "PyJWT": "2.10.1",
+      "fastapi": "0.115.12",
+      "uvicorn": "0.34.2",
+      "pydantic": "2.14.1"
+    },
+    "state": {
+      "official_scores": 0,
+      "leftover_test_triggers": 0
+    },
+    "ports": [
+      {
+        "port": 3450,
+        "listening": false,
+        "output": ""
+      },
+      {
+        "port": 3451,
+        "listening": false,
+        "output": ""
+      }
+    ]
+  },
+  "independentDatabase": "zhixue_m0_g1reviewv4_20261014",
+  "additionalRetainedDatabases": [
+    "zhixue_m0_g1reviewv4restore_20261014",
+    "zhixue_m0_g1reviewv4upgrade_20261014"
+  ],
+  "redis": {
+    "db": 5,
+    "prefix": "zhixue-g1-reviewv4-20261014",
+    "flushdb": false,
+    "testOnlyPrefixDeletion": true
+  },
+  "authorRun": {
+    "directory": "var/runs/1791973007411",
+    "inputFiles": [
+      {
+        "path": "var/runs/1791973007411/_reset.log",
+        "sha256": "034ed4fcaed2dfca66e528baa7d1678bc4fc3c8003cedcfec488d11e69c8d3a1"
+      },
+      {
+        "path": "var/runs/1791973007411/_zhixue_api.log",
+        "sha256": "cc1d17053edfb037a564db862dfaa0315f02daabf6fb3392e0d8f954bfbc5271"
+      },
+      {
+        "path": "var/runs/1791973007411/api.err",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "var/runs/1791973007411/api.log",
+        "sha256": "f04e8a880e20f81e880121b2e8d71eaa6fe7524638c459c033480f3e2f95b7c0"
+      },
+      {
+        "path": "var/runs/1791973007411/command.txt",
+        "sha256": "2ac9be1ab4a0099377e357859238d32505fa51e6e09b73ac54d978e63cacbc55"
+      },
+      {
+        "path": "var/runs/1791973007411/g1-results.json",
+        "sha256": "79183d2a758aca93d6b11fa94d662a237c0a68b920d4cbf538c218274a45d97d"
+      },
+      {
+        "path": "var/runs/1791973007411/git.txt",
+        "sha256": "b90a88e7ed36269adb691497ab5a9752300e9dd4168b4f66138ba0027cabd4f9"
+      },
+      {
+        "path": "var/runs/1791973007411/infer-count.txt",
+        "sha256": "5af56915a2b7e480855948ed03c10c7f6964d625308adc17edd39ffe2d334024"
+      },
+      {
+        "path": "var/runs/1791973007411/inference.err",
+        "sha256": "03e3a9966defdd0f7d96a6e45d5bc532c7403915ca22c0e514687ea22182a385"
+      },
+      {
+        "path": "var/runs/1791973007411/inference.log",
+        "sha256": "be527da1d6f648f76678ecd2cc8fbeb9f9dcad6df9156e95ee595e777daf3fd1"
+      },
+      {
+        "path": "var/runs/1791973007411/lock.sha256",
+        "sha256": "88792371affedb1c34e6c16da099c750418f3a90c0366c1b48c8ad42377934f4"
+      },
+      {
+        "path": "var/runs/1791973007411/scripts_seed.mjs.log",
+        "sha256": "4e4af42d42eb5b4b3555222663a383a7e57a177818774487c3ab3ddaa6ea4ff6"
+      },
+      {
+        "path": "var/runs/1791973007411/supervisor.err",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "var/runs/1791973007411/supervisor.log",
+        "sha256": "ed6ef3d9a0bf07f009b3e027b274b15eaa84d90db1d1dd24f9795529d4577be5"
+      },
+      {
+        "path": "var/runs/1791973007411/tests_m0_g1.integration.test.mjs.log",
+        "sha256": "439f30ca4284906f88bc445f1f5ed5e61631ee250034557a0a3d1eea21e4d785"
+      },
+      {
+        "path": "var/runs/1791973007411/upgrade.dump",
+        "sha256": "084046df062f411b55b1e4e9feee6f2f0895fae41b491399c8b4d924dc3a883f"
+      },
+      {
+        "path": "var/runs/1791973007411/worker-env.txt",
+        "sha256": "de7e99e8dd8153311fe9be593a9acd9f2105a87c666b71bdc00dc9d06fe9b157"
+      },
+      {
+        "path": "var/runs/1791973007411/worker.err",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "var/runs/1791973007411/worker.log",
+        "sha256": "93ef186ac56548798809bf1925e0397b0ffc29ffb952df76167c6126093b7d5b"
+      }
+    ],
+    "status": "developer_evidence_separately_identified"
+  },
+  "harnessAdjustments": {
+    "migrate": "skip shared role bootstrap only; SQL unchanged",
+    "tests": [
+      "rename upgrade and restore temp DBs to reviewer-only names"
+    ],
+    "targetLogicModified": false
+  },
+  "independentSuite": {
+    "command": "ENV_FILE=review.env PATH=/Users/johnny/.homebrew/opt/postgresql@17/bin:$PATH node --test --test-concurrency=1 --test-timeout=600000 tests/m0/g1.integration.test.mjs",
+    "exitCode": 0,
+    "durationMs": 25779.651708,
+    "nodeTests": 1,
+    "records": 44,
+    "behaviorRecords": 36,
+    "results": [
+      {
+        "name": "out_of_scope",
+        "read": 403,
+        "cancel": 403
+      },
+      {
+        "name": "terminal_cancel",
+        "status": 409,
+        "error": "succeeded"
+      },
+      {
+        "name": "forged_accept_without_attempt",
+        "status": 403
+      },
+      {
+        "name": "jti_reuse",
+        "first": 404,
+        "second": 401
+      },
+      {
+        "name": "worker_cannot_bill",
+        "status": 403
+      },
+      {
+        "name": "worker_env_whitelist",
+        "billing": false,
+        "migrator": false
+      },
+      {
+        "name": "fk_missing_job",
+        "rejected": true
+      },
+      {
+        "name": "unknown_auto_park",
+        "status": "awaiting_settlement"
+      },
+      {
+        "name": "definer_owner",
+        "rows": [
+          {
+            "proname": "object_is_live",
+            "owner": "zhixue_owner",
+            "rolbypassrls": false
+          },
+          {
+            "proname": "list_unknown_running",
+            "owner": "zhixue_owner",
+            "rolbypassrls": false
+          },
+          {
+            "proname": "list_past_deadline",
+            "owner": "zhixue_owner",
+            "rolbypassrls": false
+          }
+        ]
+      },
+      {
+        "name": "rubric_decimal",
+        "duplicate": "rubric_duplicate",
+        "precise": "succeeded",
+        "scores": 0
+      },
+      {
+        "name": "worker_model_grade",
+        "status": "succeeded",
+        "proposals": 1,
+        "budget": 998
+      },
+      {
+        "name": "binary_download",
+        "match": true
+      },
+      {
+        "name": "stage_provider_http",
+        "status": "exception_review",
+        "calls": 1
+      },
+      {
+        "name": "stage_bad_json",
+        "status": "exception_review",
+        "calls": 1
+      },
+      {
+        "name": "stage_schema_rejected",
+        "status": "exception_review",
+        "calls": 1
+      },
+      {
+        "name": "stage_failure_receipt",
+        "replay": true,
+        "conflict": 409,
+        "stale": 409
+      },
+      {
+        "name": "deadline_release",
+        "status": "failed_final"
+      },
+      {
+        "name": "schema_corpus",
+        "python": {
+          "fresh": true,
+          "observed": true,
+          "illegal": false
+        },
+        "ajvIllegal": false
+      },
+      {
+        "name": "png_download",
+        "match": true
+      },
+      {
+        "name": "jpeg_download",
+        "match": true
+      },
+      {
+        "name": "download_auth",
+        "foreign": 404,
+        "crossClass": 403,
+        "revoked": 403
+      },
+      {
+        "name": "manual_replay_revoke",
+        "replay": true,
+        "denied": 403
+      },
+      {
+        "name": "rls_pool",
+        "counts": [
+          10,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "default_cap",
+        "occupied": 2,
+        "third": false,
+        "cursor": "11111111-1111-4111-8111-111111111111"
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "model_grade_takeover",
+        "epoch": 2,
+        "proposals": 1
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "validate_takeover",
+        "status": "succeeded"
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "permit_kill_no_second_call",
+        "calls": 0
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "http_kill_no_second_call",
+        "calls": 1
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "observed_resume",
+        "calls": 1
+      },
+      {
+        "name": "supervisor_exit",
+        "code": null
+      },
+      {
+        "name": "worker_exit",
+        "code": null
+      },
+      {
+        "name": "redis_loss_rebuild",
+        "status": "succeeded"
+      },
+      {
+        "name": "relay_once",
+        "crash": 500,
+        "duplicates": 0
+      },
+      {
+        "name": "two_sweepers",
+        "removed": true
+      },
+      {
+        "name": "sweep_finalize_race",
+        "kept": true
+      },
+      {
+        "name": "batch_300",
+        "failed": 5,
+        "succeeded": 295,
+        "rerun": 5
+      },
+      {
+        "name": "dump_restore_upgrade",
+        "resultStatus": "provider_http"
+      },
+      {
+        "name": "v4_flows",
+        "done": true
+      }
+    ],
+    "knownTestLimitation": "Author restore test strips SET ROLE and tolerates any exit 1; independent exact restore probe supersedes the restore acceptance claim."
+  },
+  "positiveIndependentProbes": {
+    "recovery": [
+      {
+        "name": "two_takeovers_same_job",
+        "http": [
+          201,
+          409
+        ],
+        "current_fencing_epoch": 2,
+        "occupancy_held": false,
+        "admissions": 1,
+        "proposals": 1,
+        "invocations": 1,
+        "providerCalls": 1
+      },
+      {
+        "name": "before_ack_crash_two_reconcilers",
+        "crash": 500,
+        "repair": [
+          201,
+          201
+        ],
+        "sameDispatch": true,
+        "current_fencing_epoch": 2,
+        "occupancy_held": false,
+        "admissions": 1,
+        "proposals": 1,
+        "invocations": 1,
+        "providerCalls": 1
+      },
+      {
+        "name": "relay_pending_event_rollback_replay",
+        "rollback": {
+          "status": "pending",
+          "notices": 0,
+          "inbox": 0
+        },
+        "committed": {
+          "status": "delivered",
+          "notices": 1,
+          "inbox": 1
+        }
+      },
+      {
+        "name": "official_scores",
+        "rows": 0
+      }
+    ],
+    "pool": [
+      {
+        "name": "real_pool_sequential_A_B_none",
+        "a": {
+          "tenant": "11111111-1111-4111-8111-111111111111",
+          "pid": 43746,
+          "count": 329,
+          "tenants": [
+            "11111111-1111-4111-8111-111111111111"
+          ]
+        },
+        "b": {
+          "tenant": "22222222-2222-4222-8222-222222222222",
+          "pid": 43746,
+          "count": 1,
+          "tenants": [
+            "22222222-2222-4222-8222-222222222222"
+          ]
+        },
+        "none": {
+          "pid": 43746,
+          "n": 0
+        }
+      },
+      {
+        "name": "real_pool_concurrent_16_requests",
+        "requests": 16,
+        "backendConnections": 8,
+        "contextsCorrect": true,
+        "postReleaseNoContext": [
+          0
+        ]
+      }
+    ],
+    "originalSchemaUpgrade": {
+      "database": "zhixue_m0_g1reviewv4upgrade_20261014",
+      "baseline": "original 0001-0004 plus synthetic seed rows",
+      "before": {
+        "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3",
+        "result_status": "accepted"
+      },
+      "previousCheckRejected": true,
+      "after": {
+        "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3",
+        "result_status": "provider_http"
+      },
+      "versions": [
+        {
+          "version": "0001"
+        },
+        {
+          "version": "0002"
+        },
+        {
+          "version": "0003"
+        },
+        {
+          "version": "0004"
+        },
+        {
+          "version": "0005"
+        },
+        {
+          "version": "0006"
+        }
+      ],
+      "deliveryOwner": "zhixue_owner",
+      "original0005and0006": true
+    }
+  },
+  "confirmedCounterexamples": {
+    "rls": {
+      "time": "2026-10-14T10:48:09.441Z",
+      "tests": [
+        {
+          "role": "zhixue_ai_ingress",
+          "flags": {
+            "relrowsecurity": false,
+            "relforcerowsecurity": true,
+            "owner": "zhixue_owner"
+          },
+          "counts": [
+            {
+              "context": "11111111-1111-4111-8111-111111111111",
+              "total": 330,
+              "tenant_a_rows": 330,
+              "credentials": 330
+            },
+            {
+              "context": "22222222-2222-4222-8222-222222222222",
+              "total": 330,
+              "tenant_a_rows": 330,
+              "credentials": 330
+            },
+            {
+              "context": "none",
+              "total": 330,
+              "tenant_a_rows": 330,
+              "credentials": 330
+            }
+          ],
+          "crossTenantUpdateRows": 330,
+          "crossTenantMissingJobInsert": "accepted_and_rolled_back"
+        },
+        {
+          "role": "zhixue_reconciler",
+          "flags": {
+            "relrowsecurity": false,
+            "relforcerowsecurity": true,
+            "owner": "zhixue_owner"
+          },
+          "counts": [
+            {
+              "context": "11111111-1111-4111-8111-111111111111",
+              "total": 330,
+              "tenant_a_rows": 330,
+              "credentials": 330
+            },
+            {
+              "context": "22222222-2222-4222-8222-222222222222",
+              "total": 330,
+              "tenant_a_rows": 330,
+              "credentials": 330
+            },
+            {
+              "context": "none",
+              "total": 330,
+              "tenant_a_rows": 330,
+              "credentials": 330
+            }
+          ],
+          "crossTenantUpdateRows": 330,
+          "crossTenantMissingJobInsert": "accepted_and_rolled_back"
+        }
+      ]
+    },
+    "foreignKeys": [
+      {
+        "name": "nonexistent_job_and_attempt",
+        "result": "accepted",
+        "context": "11111111-1111-4111-8111-111111111111",
+        "inserted": 1,
+        "rolledBack": true
+      },
+      {
+        "name": "attempt_belongs_to_different_job",
+        "result": "accepted",
+        "context": "11111111-1111-4111-8111-111111111111",
+        "changed": 1,
+        "rolledBack": true
+      },
+      {
+        "name": "nonpositive_epoch_and_generation",
+        "result": "accepted",
+        "context": "11111111-1111-4111-8111-111111111111",
+        "changed": 1,
+        "parentsValid": true,
+        "rolledBack": true
+      }
+    ],
+    "exactRestore": {
+      "target": "zhixue_m0_g1reviewv4restore_20261014",
+      "pgRestoreExit": 1,
+      "restoreLog": "pg_restore: error: could not execute query: ERROR:  must be owner of extension pgcrypto\nCommand was: COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';\n\n\npg_restore: warning: errors ignored on restore: 1\n",
+      "original0006": {
+        "passed": false,
+        "code": "42501",
+        "message": "permission denied for schema zhixue"
+      },
+      "securityDefinerFunctions": [
+        {
+          "proname": "ack_dispatch",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "claim_object_reclaim",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "expire_committing_uploads",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "job_tenant",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_capability_dispatches",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_expired_admissions",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_expired_without_unknown",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_memberships",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_past_deadline",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_queued_for_admit",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_storage_keys",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "list_unknown_running",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "metrics_snapshot",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "object_is_live",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "ops_usage_totals",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "publish_score_version",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "register_capability",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "replace_capability",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "resolve_work_route",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        },
+        {
+          "proname": "session_identity",
+          "owner": "zhixue_migrator",
+          "rolbypassrls": true
+        }
+      ],
+      "oldJobs": [
+        {
+          "status": "queued",
+          "result_status": "pending"
+        }
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "G1-V4-01",
+      "severity": "Critical",
+      "type": "confirmed_defect",
+      "title": "delivery_intents RLS disabled",
+      "evidence": "rls-probe.json",
+      "result": "counterexample_reproduced"
+    },
+    {
+      "id": "G1-V4-02",
+      "severity": "Major",
+      "type": "confirmed_defect",
+      "title": "delivery_intents missing relational and generation constraints",
+      "evidence": "fk-probe.json",
+      "result": "counterexample_reproduced"
+    },
+    {
+      "id": "G1-V4-03",
+      "severity": "Major",
+      "type": "confirmed_defect",
+      "title": "restore changes security owners; original migration fails",
+      "evidence": "restore-probe.json",
+      "result": "counterexample_reproduced"
+    },
+    {
+      "id": "G1-V4-04",
+      "severity": "Major",
+      "type": "original_gate_evidence_gap",
+      "title": "Compose CI and authorized-paper PoC not run",
+      "result": "not_verified"
+    }
+  ],
+  "harnessFirstRun": {
+    "file": "harness-counter-first-recovery-probe.json",
+    "status": "reviewer_counter_parser_error",
+    "resolution": "Counter parser corrected to exact job ID per line; target code unchanged; rerun passed."
+  },
+  "notVerified": [
+    "Docker Compose PG16.10 profile",
+    "GitHub Actions Python3.12 profile",
+    "Authorized real paper and standard-answer PoC",
+    "Real student quality",
+    "Production",
+    "Full M1-M3 architecture and state machine"
+  ],
+  "notes": [
+    "Illegal SQL probe writes rolled back",
+    "Security proof logs contain counts not lease token values",
+    "Shared role passwords attributes and memberships unchanged",
+    "New review DB scoped CREATE grants only",
+    "Pause test trigger removed",
+    "Review API Worker inference stopped"
+  ]
+}

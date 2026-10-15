@@ -1,0 +1,58 @@
+{
+  "evidenceKind": "source_methods_with_doubles_not_DB_integration",
+  "checks": [
+    {
+      "name": "takeover_creates_attempt_but_reconcile_dispatches_nothing",
+      "kind": "remaining_defect",
+      "takeovers": 1,
+      "newAttempts": 1,
+      "workerDispatches": 0
+    },
+    {
+      "name": "model_grade_provider_error_returns_409_and_rolls_back",
+      "kind": "remaining_defect",
+      "error": "control_mismatch",
+      "transaction": "rolled_back",
+      "jobNotTerminated": true
+    },
+    {
+      "name": "duplicate_criterion_overaward_accepted",
+      "kind": "remaining_defect",
+      "rubricMax": "1.00",
+      "sameCriterionAwardedTwice": "2.00",
+      "semanticError": null
+    },
+    {
+      "name": "valid_decimal_sum_rejected",
+      "kind": "remaining_defect",
+      "validSum": "0.10+0.20=0.30",
+      "semanticError": "score_mismatch"
+    },
+    {
+      "name": "old_shared_token_rejected_by_new_verifier",
+      "kind": "fixed_guard_and_CI_incompatibility",
+      "status": 401
+    },
+    {
+      "name": "worker_key_cannot_expand_billing_scope",
+      "kind": "fixed_guard",
+      "status": 403
+    },
+    {
+      "name": "missing_exp_rejected",
+      "kind": "fixed_guard",
+      "status": 401
+    },
+    {
+      "name": "token_attempt_mismatch_rejected",
+      "kind": "fixed_guard",
+      "status": 403
+    },
+    {
+      "name": "possession_of_billing_key_allows_billing_identity",
+      "kind": "credential_distribution_risk",
+      "accepted": true,
+      "note": "New runner passes the entire multi-service environment to Worker; no production claim"
+    }
+  ]
+}

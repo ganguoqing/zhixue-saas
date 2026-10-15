@@ -53,13 +53,14 @@ try {
     [membershipA, A, teacherA, membershipB, B, teacherB],
   );
   await client.query(
-    `INSERT INTO zhixue.data_scope_grants (id, tenant_id, membership_id, class_id, subject_id) VALUES
-      ($1, $2, $3, 'c1', 'math'),
-      ($4, $5, $6, 'c1', 'math')`,
-    [
-      'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaa12', A, membershipA,
-      'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbb12', B, membershipB,
-    ],
+    `INSERT INTO zhixue.data_scope_grants (id, tenant_id, membership_id, class_id, subject_id, action)
+     SELECT gen_random_uuid(), tenant_id, membership_id, class_id, subject_id, action
+     FROM (VALUES
+       ($1::uuid, $2::uuid, 'c1', 'math'),
+       ($3::uuid, $4::uuid, 'c1', 'math')
+     ) AS members(tenant_id, membership_id, class_id, subject_id)
+     CROSS JOIN (VALUES ('read'), ('finalize'), ('cancel'), ('manual')) AS actions(action)`,
+    [A, membershipA, B, membershipB],
   );
   const keyA = writeObject(A, assetA);
   const keyB = writeObject(B, assetB);
@@ -78,8 +79,17 @@ try {
     [A, submissionA, assetA, B, submissionB, assetB],
   );
   await client.query(
-    `INSERT INTO zhixue.paper_questions (tenant_id, paper_version_id, id) VALUES ($1, $2, $3)`,
-    [A, paperVersion, questionId],
+    `INSERT INTO zhixue.paper_questions (tenant_id, paper_version_id, id) VALUES ($1, $2, $3), ($1, $2, $4)`,
+    [A, paperVersion, questionId, '018f0a3e-7c21-7b2a-8c11-111111111112'],
+  );
+  await client.query(
+    `INSERT INTO zhixue.rubric_points (tenant_id, paper_version_id, question_id, criterion_id, max_points)
+     VALUES ($1, $2, $3, $5, 1.00), ($1, $2, $4, $5, 1.00)`,
+    [A, paperVersion, questionId, '018f0a3e-7c21-7b2a-8c11-111111111112', '018f0a3e-7c21-7b2a-8c11-222222222222'],
+  );
+  await client.query(
+    `INSERT INTO zhixue.invocation_budgets (tenant_id, remaining) VALUES ($1, 1000), ($2, 1000)`,
+    [A, B],
   );
   const jobOk = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3';
   const attemptOk = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa4';

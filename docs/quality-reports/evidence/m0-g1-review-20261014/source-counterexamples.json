@@ -1,0 +1,55 @@
+{
+  "scope": "Source logic only; no database, network, HTTP or RLS verification",
+  "results": [
+    {
+      "name": "out_of_scope_cancel",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "out_of_scope_manual_recovery",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "terminal_cancel_reports_cancelled",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "fabricated_invocation_accepted",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "mismatched_envelope_controls_accepted",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "unknown_second_question_accepted",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "duplicate_questions_accepted",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "invalid_evidence_order_and_score_sum_accepted",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "prepare_invocation_on_cancelled_job",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    },
+    {
+      "name": "orphan_sweep_deletes_inflight_uncommitted_file",
+      "reproduced": true,
+      "evidenceKind": "source_logic_with_pool_doubles"
+    }
+  ]
+}
