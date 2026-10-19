@@ -188,3 +188,14 @@ Docker Compose 所写的 PostgreSQL 16.10、CI 工作流、真实模型供应商
 | G1-V4-02 | 同租户 job / attempt / epoch 外键，epoch 与 generation 必须为正。不一致旧行使 0007 失败且不删除 | 不存在父行、另一个作业、epoch/generation 0、跨租户父引用被拒绝。正常 claim 与接管通过。不一致样本升级失败后原行仍在 | not_run | — |
 | G1-V4-03 | restore-isolated.mjs 用不带 --no-owner 的 bootstrap 恢复，再执行原迁移文件。非 pgcrypto COMMENT 错误失败 | 0004 有数据原样升到 0007；另一次 dump/restore 后原样执行 0005–0007。属主不是 migrator，定义者函数 rolbypassrls=false。缺失 dump 使恢复失败。恢复库 Worker 窄链成功且正式分为 0 | not_run | — |
 | G1-V4-04 | 保留 Compose / CI 配置，并写出 PoC 授权清单 | 本机 PG 17.11 / Python 3.14.4 套件通过。docker info 失败，Compose 与 CI 未执行。授权试卷和标准答案仍未提供 | not_run | 负责人提供样本与端点；环境执行者提供 Docker / CI |
+
+## 2026-10-19 v6 验证补充
+
+历史矩阵和独立报告保留。证据见 `m0-g1-evidence-v6.md`。本轮是开发者回归与 CI 验证，`independent_verified` 仍为 `not_run`；不将 F01–F28 标成 Closed，不宣布 G1 Go。
+
+| ID | 本轮新增证据 | independent_verified | 剩余 |
+|---|---|---|---|
+| G1-V4-01 | 本地真实角色回归；新增检查 `zhixue` 中全部 32 张带 tenant_id 的表均 ENABLE + FORCE RLS，ingress/reconciler 无上下文 UPDATE 为 0 | not_run | 独立复验 |
+| G1-V4-02 | 本地新增逐项拒绝 epoch 0、generation 0、正数 epoch/世代不匹配、输入摘要、stage、billable 篡改；正常链与接管仍通过 | not_run | 独立复验 |
+| G1-V4-03 | 新临时 PostgreSQL 集群原样运行 0004→0007 升级、保留属主恢复、异常恢复拒绝和恢复库 Worker 窄链 | not_run | 独立复验 |
+| G1-V4-04 | `51f8cc9` 的 GitHub Actions Compose 集成已通过，PostgreSQL 16.10 / Redis 7.4.2 / Python 3.12 剖面已有运行证据 | not_run | 获授权试卷、标准答案、模型端点/费用上限及人工 PoC 验收；G1 独立复验 |
