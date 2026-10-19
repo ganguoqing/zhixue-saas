@@ -2,6 +2,8 @@
 
 本文件描述 2026-10-13 决议之后的可运行切片。它不是完整阅卷，也不接入真实学生数据。开发配置里的 cap、租约和文件大小是测试值。
 
+2026-10-19 更新：当前 G1 复现入口是 `ZHIXUE_PROFILE=compose node scripts/run-isolated.mjs`，使用可丢弃的专用测试库。运行与验收状态见 [证据 v6](../quality-reports/m0-g1-evidence-v6.md)。下面的 `run-m0.mjs` 说明保留为早期记录。
+
 ## 复现
 
 ```bash

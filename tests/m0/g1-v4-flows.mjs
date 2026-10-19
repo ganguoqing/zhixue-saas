@@ -454,6 +454,21 @@ print(json.dumps({"fresh": schema_ok(docs["fresh"]), "observed": schema_ok(docs[
   );
   assert.equal(flags.rows[0].relrowsecurity, true);
   assert.equal(flags.rows[0].relforcerowsecurity, true);
+  const tenantTables = await migrator.query(
+    `SELECT c.relname, c.relrowsecurity, c.relforcerowsecurity
+     FROM pg_class c
+     JOIN pg_namespace n ON n.oid = c.relnamespace
+     JOIN pg_attribute a ON a.attrelid = c.oid
+     WHERE n.nspname = 'zhixue' AND c.relkind IN ('r', 'p')
+       AND a.attname = 'tenant_id' AND a.attnum > 0 AND NOT a.attisdropped
+     ORDER BY c.relname`,
+  );
+  assert.ok(tenantTables.rows.length > 0);
+  for (const table of tenantTables.rows) {
+    assert.equal(table.relrowsecurity, true, `${table.relname}: RLS must be enabled`);
+    assert.equal(table.relforcerowsecurity, true, `${table.relname}: RLS must be forced`);
+  }
+  records.push({ name: 'tenant_table_rls_catalog', tables: tenantTables.rows.map((row) => row.relname) });
   const owners = await migrator.query(
     `SELECT r.rolname, r.rolbypassrls FROM pg_roles r WHERE r.rolname IN ('zhixue_owner', 'zhixue_router')`,
   );
@@ -485,6 +500,8 @@ print(json.dumps({"fresh": schema_ok(docs["fresh"]), "observed": schema_ok(docs[
     assert.equal(none.rows[0].tokens, 0, role);
     const write = await tenantQuery(role, passwordEnv, B, 'UPDATE zhixue.delivery_intents SET state = state WHERE tenant_id = $1', [A]);
     assert.equal(write.rowCount, 0, role);
+    const noContextWrite = await tenantQuery(role, passwordEnv, null, 'UPDATE zhixue.delivery_intents SET state = state');
+    assert.equal(noContextWrite.rowCount, 0, role);
     await assert.rejects(
       tenantQuery(role, passwordEnv, B,
         `INSERT INTO zhixue.delivery_intents
@@ -495,7 +512,7 @@ print(json.dumps({"fresh": schema_ok(docs["fresh"]), "observed": schema_ok(docs[
     );
   }
   const parent = await migrator.query(
-    `SELECT d.id, d.job_id, j2.id AS other_job
+    `SELECT d.id, d.job_id, d.fencing_epoch, d.generation, j2.id AS other_job
      FROM zhixue.delivery_intents d
      JOIN zhixue.processing_jobs j2 ON j2.tenant_id = d.tenant_id AND j2.id <> d.job_id
      WHERE d.tenant_id = $1 LIMIT 1`,
@@ -529,6 +546,25 @@ print(json.dumps({"fresh": schema_ok(docs["fresh"]), "observed": schema_ok(docs[
       [B, randomUUID(), parent.rows[0].job_id, randomUUID(), 'ab'.repeat(32)]),
     (error) => error.code === '23503' || error.code === '23514',
   );
+  const authorityCases = [
+    ['epoch_zero', 'fencing_epoch = 0', []],
+    ['generation_zero', 'generation = 0', []],
+    ['epoch_mismatch', 'fencing_epoch = $2', [parent.rows[0].fencing_epoch + 1]],
+    ['generation_mismatch', 'generation = $2', [parent.rows[0].generation + 1]],
+    ['input_hash_mismatch', "input_hash = repeat('0', 64)", []],
+    ['stage_mismatch', "stage = CASE stage WHEN 'model_grade' THEN 'validate_asset' ELSE 'model_grade' END", []],
+    ['billable_mismatch', 'billable = NOT billable', []],
+  ];
+  for (const [name, assignment, params] of authorityCases) {
+    await assert.rejects(
+      tenantQuery('zhixue_ai_ingress', 'ZHIXUE_INGRESS_PASSWORD', A,
+        `UPDATE zhixue.delivery_intents SET ${assignment} WHERE id = $1`,
+        [parent.rows[0].id, ...params]),
+      (error) => error.code === '23514',
+      name,
+    );
+  }
+  records.push({ name: 'delivery_authority_guards', rejected: authorityCases.map(([name]) => name) });
   records.push({ name: 'delivery_rls_fk', enabled: true });
 
   stopSupervisor();

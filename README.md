@@ -2,6 +2,27 @@
 
 2026-10-13，项目负责人批准了 G0 决议清单 v5 的 M0 范围。批准原文见 `docs/decisions/g0-decision-record-20261013.md`。M0 只做 Prompt 2 的窄切片。完整阅卷、真实学生数据和生产部署不在该授权内。
 
+## 当前进度（2026-10-19）
+
+当前已有 NestJS API、Python BullMQ Worker、FastAPI mock、七个数据库迁移和 M0 集成测试；尚无正式 Web 业务前端。工作仍在 M0 / G1 验收阶段。
+
+- v5 修复涉及投递意图的 RLS、父子/世代约束和保留属主的备份恢复。
+- `51f8cc9` 的 GitHub Actions 已运行 Compose 剖面并通过；本轮又补充了全租户表 RLS 目录检查和七类投递篡改负例。
+- 本轮开发者验证与原始证据入口见 [M0 G1 证据 v6](docs/quality-reports/m0-g1-evidence-v6.md)。独立复验和获授权 AI PoC 仍待完成，不能据此宣布 G1 Go 或进入 M1。
+
+当前 Compose 集成入口（仅合成数据、可丢弃测试库）：
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r apps/worker/requirements.txt
+npm ci
+ZHIXUE_PROFILE=compose node scripts/run-isolated.mjs
+```
+
+该命令启动 PostgreSQL 16.10 / Redis 7.4.2，并重置专用测试库 `zhixue_m0_g1compose`。结果写入 `var/runs/<run-id>/`；CI 会归档结果与日志，排除对象文件。
+
+接口见 [M0 接口](docs/api/m0-interface.md)，恢复见 [隔离恢复说明](docs/operations/m0-restore.md)。旧 `run-m0.mjs` 和 `npm run test:m0` 保留为早期入口，不作为本轮 G1 证据入口。
+
 以下是此前的起步说明，保留作来源，不再表示仓库只能停留在设计。
 
 # 智学 SaaS — Cursor G0 项目起步材料
