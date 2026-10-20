@@ -1,0 +1,264 @@
+{
+  "paper": {
+    "task_id": "extract-paper-v1",
+    "images": [],
+    "prompt": "这是已授权七年级数学试卷的8个逻辑页面，顺序为第1至8页，仅包含空白试卷。请拆分并提取全部第1至24题，不能把页码/得分表/手写旁注当成题目。抄录题干和选项，冗长背景可压缩，但所有数学条件、数值、正负号、分数、绝对值和运算符必须保留。必须区分乘号、除号与分数。多小问放入subparts；图形依赖标记depends_on_diagram=true，不确定内容标记illegible并解释warnings。不要解答，不补全看不清的符号。各题分值优先取题旁或所在大题明确分值。输出符合下面JSON Schema的JSON。",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "printed_total_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 24,
+          "maxItems": 24,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 24
+              },
+              "type": {
+                "enum": [
+                  "choice",
+                  "fill",
+                  "response"
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "max_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "source_pages": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                }
+              },
+              "subparts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "depends_on_diagram": {
+                "type": "boolean"
+              },
+              "illegible": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "text",
+              "max_score",
+              "source_pages",
+              "subparts",
+              "depends_on_diagram",
+              "illegible"
+            ]
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "title",
+        "printed_total_score",
+        "questions",
+        "warnings"
+      ]
+    },
+    "max_completion_tokens": 12288
+  },
+  "key": {
+    "task_id": "extract-answer-key-v1",
+    "images": [],
+    "prompt": "这是负责人提供的标准答案的8个逻辑页面，顺序为1至8页，是空白试卷上的红笔参考解答，不是学生答卷。请提取第1至24题的红笔参考答案及必要解题步骤，按题号匹配。选择题提取字母，填空提取精确数值；解答题保留各小问的实际红笔内容。只提取图中实际给出的答案，不自行计算补全、不把印刷的错误示例当成标准答案。缺少小问答案时complete=false，并在uncertainties准确说明；无法辨认的reference可null。注意除号与分数、正负号、公式符号和跨页对应，必要时标明矛盾。只输出JSON。",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "type": "array",
+          "minItems": 24,
+          "maxItems": 24,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 24
+              },
+              "reference": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_pages": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                }
+              },
+              "complete": {
+                "type": "boolean"
+              },
+              "uncertainties": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "reference",
+              "source_pages",
+              "complete",
+              "uncertainties"
+            ]
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "answers",
+        "warnings"
+      ]
+    },
+    "max_completion_tokens": 10000
+  },
+  "synthetic": {
+    "task_id": "align-and-synthetic-cases-v1",
+    "images": [],
+    "prompt": "图片是程序生成的合成作答样例，没有真实学生身份。先对下面分别从空白试卷和标准答案图像提取的数据按题号进行匹配，并检查内容矛盾、公式/变量差异、无法识别/缺失答案。列出alignment_issues，不要强行让两份材料一致。再读取图片S1-S8的合成答案，返回评分建议。只对无矛盾且答案明确的选择题/填空题按题目分值给建议分；等值分数/小数可以等价。主观题没有经教师确认的逐小问评分细则，或题目模糊、参考不全、变量冲突时，suggested_score必须为null并解释原因。每一项review_required必须为true，结果只供人工复核，不是正式成绩。不得补造标准答案。",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "question_id_matches": {
+          "type": "array",
+          "minItems": 24,
+          "maxItems": 24,
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 24
+          }
+        },
+        "alignment_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "question_id": {
+                "type": "integer"
+              },
+              "issue": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_id",
+              "issue"
+            ]
+          }
+        },
+        "case_results": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "case_id": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 24
+              },
+              "recognized_answer": {
+                "type": "string"
+              },
+              "suggested_score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 120
+              },
+              "reference_status": {
+                "enum": [
+                  "aligned",
+                  "ambiguous",
+                  "missing",
+                  "mismatch"
+                ]
+              },
+              "review_required": {
+                "const": true
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "case_id",
+              "question_id",
+              "recognized_answer",
+              "suggested_score",
+              "reference_status",
+              "review_required",
+              "reason"
+            ]
+          }
+        }
+      },
+      "required": [
+        "question_id_matches",
+        "alignment_issues",
+        "case_results"
+      ]
+    },
+    "max_completion_tokens": 5000
+  }
+}

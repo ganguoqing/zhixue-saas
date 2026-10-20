@@ -1,0 +1,50 @@
+[
+  {
+    "case_id": "S1",
+    "question_id": 1,
+    "answer": "B",
+    "expected_score": 3
+  },
+  {
+    "case_id": "S2",
+    "question_id": 2,
+    "answer": "C",
+    "expected_score": 0
+  },
+  {
+    "case_id": "S3",
+    "question_id": 13,
+    "answer": "-5",
+    "expected_score": 0
+  },
+  {
+    "case_id": "S4",
+    "question_id": 14,
+    "answer": "0.5",
+    "expected_score": 3
+  },
+  {
+    "case_id": "S5",
+    "question_id": 16,
+    "answer": "18",
+    "expected_score": 3
+  },
+  {
+    "case_id": "S6",
+    "question_id": 21,
+    "answer": "(1) -34",
+    "expected_score": null
+  },
+  {
+    "case_id": "S7",
+    "question_id": 17,
+    "answer": "(1) ? [unclear]",
+    "expected_score": null
+  },
+  {
+    "case_id": "S8",
+    "question_id": 24,
+    "answer": "(2)II m = 50/7 or 150/7 or 10",
+    "expected_score": null
+  }
+]

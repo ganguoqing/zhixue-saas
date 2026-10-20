@@ -1,0 +1,2 @@
+# Optional local image preparation; the paid client uses worker requirements.
+Pillow==12.3.0

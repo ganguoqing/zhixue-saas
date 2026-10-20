@@ -26,6 +26,7 @@ jobs:
           python-version: "3.12"
       - run: python -m venv .venv && .venv/bin/pip install -r apps/worker/requirements.txt
       - run: npm ci
+      - run: .venv/bin/python -m unittest discover -s tests/poc -v
       - run: ZHIXUE_PROFILE=compose node scripts/run-isolated.mjs
       - name: Preserve M0 verification evidence
         if: always()
