@@ -61,6 +61,8 @@
 
 新增回归提交的 [CI 运行 39281298123](https://github.com/ganguoqing/zhixue-saas/actions/runs/39281298123) 已触发。截至 2026-10-19 23:56（UTC+8）仍在等待 GitHub runner；不能将新增测试的 Compose 执行或 artifact 上传步骤写为通过。本地新增测试已通过，见第 2 节。
 
+2026-10-20 后续核对：该运行现为 `success`，目标提交仍为 `30a81b1613630efec9e5e0fef329e4bf0b1799ba`。证据 artifact `m0-g1-evidence-39281298123-1` 已成功下载，包含 `g1-results.json`、命令、Worker/API 日志、恢复记录和锁文件哈希；新增 RLS 目录与七类权威快照负例均在归档结果中。本段补充后续状态，不将上一段当时的排队观察改写为通过。
+
 ## 4. 复现和原始证据
 
 已安装 Node 依赖、Python 虚拟环境和 Docker daemon 的环境可运行：

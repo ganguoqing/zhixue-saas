@@ -199,3 +199,9 @@ Docker Compose 所写的 PostgreSQL 16.10、CI 工作流、真实模型供应商
 | G1-V4-02 | 本地新增逐项拒绝 epoch 0、generation 0、正数 epoch/世代不匹配、输入摘要、stage、billable 篡改；正常链与接管仍通过 | not_run | 独立复验 |
 | G1-V4-03 | 新临时 PostgreSQL 集群原样运行 0004→0007 升级、保留属主恢复、异常恢复拒绝和恢复库 Worker 窄链 | not_run | 独立复验 |
 | G1-V4-04 | `51f8cc9` 的 GitHub Actions Compose 集成已通过，PostgreSQL 16.10 / Redis 7.4.2 / Python 3.12 剖面已有运行证据 | not_run | 获授权试卷、标准答案、模型端点/费用上限及人工 PoC 验收；G1 独立复验 |
+
+## 2026-10-20 授权 PoC 与 CI 后续
+
+独立复验状态仍为 `not_run`，既有独立 No-Go 不改写。V4-04 的样本与端点授权已实际取得，独立离线客户端完成 3 次指定方舟模型调用；源卷及参考题号覆盖 1–24，8 个合成样例的建议分/NULL 及人工复核守卫符合本次预期，同时发现关键变量误读和错误数学解释。费用估算 ¥0.390456，未取得实结账单。实际授权、元数据与限制见 `m0-ark-poc-report-20261020.md`。
+
+v6 新增回归的 Compose CI `39281298123` 已成功，证据 artifact 已下载可读。项目负责人对 PoC 的人工验收，以及独立 QA / Architecture Review 对修复和 PoC 的复验仍待完成；F01–F28 不标 Closed，不进入 M1。

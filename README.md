@@ -2,13 +2,14 @@
 
 2026-10-13，项目负责人批准了 G0 决议清单 v5 的 M0 范围。批准原文见 `docs/decisions/g0-decision-record-20261013.md`。M0 只做 Prompt 2 的窄切片。完整阅卷、真实学生数据和生产部署不在该授权内。
 
-## 当前进度（2026-10-19）
+## 当前进度（2026-10-20）
 
 当前已有 NestJS API、Python BullMQ Worker、FastAPI mock、七个数据库迁移和 M0 集成测试；尚无正式 Web 业务前端。工作仍在 M0 / G1 验收阶段。
 
 - v5 修复涉及投递意图的 RLS、父子/世代约束和保留属主的备份恢复。
 - `51f8cc9` 的 GitHub Actions 已运行 Compose 剖面并通过；本轮又补充了全租户表 RLS 目录检查和七类投递篡改负例。
-- 本轮开发者验证与原始证据入口见 [M0 G1 证据 v6](docs/quality-reports/m0-g1-evidence-v6.md)。独立复验和获授权 AI PoC 仍待完成，不能据此宣布 G1 Go 或进入 M1。
+- 开发者验证与原始证据入口见 [M0 G1 证据 v6](docs/quality-reports/m0-g1-evidence-v6.md)，新增回归的 Compose CI 与证据归档也已通过。
+- 获授权方舟 PoC 已实际运行 3 次，记录拆题/匹配及失败案例，见 [PoC 实测报告](docs/quality-reports/m0-ark-poc-report-20261020.md)。独立复验和项目负责人对 PoC 的人工验收仍待完成，不能据此宣布 G1 Go 或进入 M1。
 
 当前 Compose 集成入口（仅合成数据、可丢弃测试库）：
 

@@ -1,0 +1,207 @@
+{
+  "run": {
+    "conclusion": "success",
+    "createdAt": "2026-10-19T15:53:14Z",
+    "headSha": "30a81b1613630efec9e5e0fef329e4bf0b1799ba",
+    "jobs": [
+      {
+        "completedAt": "2026-10-19T15:54:50Z",
+        "conclusion": "success",
+        "databaseId": 118155920711,
+        "name": "integration",
+        "startedAt": "2026-10-19T15:53:18Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T15:53:19Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T15:53:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:53:21Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-19T15:53:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:53:22Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-node@v4",
+            "number": 3,
+            "startedAt": "2026-10-19T15:53:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:53:22Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 4,
+            "startedAt": "2026-10-19T15:53:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:53:30Z",
+            "conclusion": "success",
+            "name": "Run python -m venv .venv && .venv/bin/pip install -r apps/worker/requirements.txt",
+            "number": 5,
+            "startedAt": "2026-10-19T15:53:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:53:35Z",
+            "conclusion": "success",
+            "name": "Run npm ci",
+            "number": 6,
+            "startedAt": "2026-10-19T15:53:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:54:42Z",
+            "conclusion": "success",
+            "name": "Run ZHIXUE_PROFILE=compose node scripts/run-isolated.mjs",
+            "number": 7,
+            "startedAt": "2026-10-19T15:53:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:54:43Z",
+            "conclusion": "success",
+            "name": "Preserve M0 verification evidence",
+            "number": 8,
+            "startedAt": "2026-10-19T15:54:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:54:43Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 14,
+            "startedAt": "2026-10-19T15:54:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:54:43Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-node@v4",
+            "number": 15,
+            "startedAt": "2026-10-19T15:54:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:54:43Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 16,
+            "startedAt": "2026-10-19T15:54:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T15:54:43Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "startedAt": "2026-10-19T15:54:43Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/ganguoqing/zhixue-saas/actions/runs/39281298123/job/118155920711"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-10-19T16:18:55Z",
+    "url": "https://github.com/ganguoqing/zhixue-saas/actions/runs/39281298123"
+  },
+  "artifact_name": "m0-g1-evidence-39281298123-1",
+  "g1_results_sha256": "166cfc788ebf6af6cba79a727a8a306f4b8dc957a6e0a45715209e923105af5a",
+  "checked_results": [
+    {
+      "name": "tenant_table_rls_catalog",
+      "tables": [
+        "answer_revisions",
+        "asset_notices",
+        "audit_events",
+        "command_receipts",
+        "consumer_inbox",
+        "data_scope_grants",
+        "delivery_intents",
+        "exam_participations",
+        "exam_roster_entries",
+        "exams",
+        "execution_attempts",
+        "grade_proposals",
+        "invocation_budgets",
+        "job_admissions",
+        "matching_bindings",
+        "memberships",
+        "model_invocations",
+        "outbox_events",
+        "paper_questions",
+        "participation_roster_links",
+        "processing_jobs",
+        "rubric_points",
+        "score_drafts",
+        "score_versions",
+        "source_assets",
+        "students",
+        "submission_generations",
+        "submission_page_sets",
+        "submissions",
+        "tenant_execution_occupancy",
+        "upload_sessions",
+        "usage_ledger_entries"
+      ]
+    },
+    {
+      "name": "delivery_authority_guards",
+      "rejected": [
+        "epoch_zero",
+        "generation_zero",
+        "epoch_mismatch",
+        "generation_mismatch",
+        "input_hash_mismatch",
+        "stage_mismatch",
+        "billable_mismatch"
+      ]
+    },
+    {
+      "name": "delivery_rls_fk",
+      "enabled": true
+    },
+    {
+      "name": "batch_300",
+      "failed": 5,
+      "succeeded": 295,
+      "rerun": 5
+    }
+  ],
+  "artifact_file_names": [
+    "m0-g1-evidence-39281298123-1/1792425215452/_reset.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/_wait.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/_zhixue_api.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/api.err",
+    "m0-g1-evidence-39281298123-1/1792425215452/api.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/bad-restore.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/command.txt",
+    "m0-g1-evidence-39281298123-1/1792425215452/g1-results.json",
+    "m0-g1-evidence-39281298123-1/1792425215452/git.txt",
+    "m0-g1-evidence-39281298123-1/1792425215452/infer-count.txt",
+    "m0-g1-evidence-39281298123-1/1792425215452/inference.err",
+    "m0-g1-evidence-39281298123-1/1792425215452/inference.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/lock.sha256",
+    "m0-g1-evidence-39281298123-1/1792425215452/restore-api.err",
+    "m0-g1-evidence-39281298123-1/1792425215452/restore-api.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/restore.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/scripts_seed.mjs.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/supervisor.err",
+    "m0-g1-evidence-39281298123-1/1792425215452/supervisor.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/tests_m0_g1_v5_restore.test.mjs.log",
+    "m0-g1-evidence-39281298123-1/1792425215452/worker-env.txt",
+    "m0-g1-evidence-39281298123-1/1792425215452/worker.err",
+    "m0-g1-evidence-39281298123-1/1792425215452/worker.log"
+  ]
+}
